@@ -5982,6 +5982,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &248532525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248532515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0d051f83a49264db8cb5fca35c2155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: []
 --- !u!1001 &249983011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37205,6 +37218,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4885524285920608464, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 248532519}
+    - targetCorrespondingSourceObject: {fileID: 4885524285920608464, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248532525}
   m_SourcePrefab: {fileID: 100100000, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
 --- !u!1001 &1673941986
 PrefabInstance:

@@ -7,11 +7,12 @@ public class Tweener : MonoBehaviour
 {
     private Tween activeTween;
 
-    public void AddTween(Tween tween)
+    public bool AddTween(Tween tween)
     {
-        if (activeTween != null) return;
+        if (activeTween != null) return false;
 
         activeTween = tween;
+        return true;
     }
 
     private void Update()

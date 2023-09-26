@@ -20,34 +20,44 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
+        // GetInput();
     }
 
     void GetInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Move(Vector2.left, -1, 0);
+            Move(Vector2.left);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Move(Vector2.right, 1, 0);
+            Move(Vector2.right);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Move(Vector2.up, 0, 1);
+            Move(Vector2.up);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Move(Vector2.down, 0, -1);
+            Move(Vector2.down);
         }
     }
 
-    private void Move(Vector2 moveTo, int horizontal, int vertical)
+    private void Move(Vector2 moveTo)
     {
+        
         tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f));
-        anim.SetFloat("Horizontal", horizontal);
-        anim.SetFloat("Vertical", vertical);
+        anim.SetFloat("Horizontal", moveTo.x);
+        anim.SetFloat("Vertical", moveTo.y);
+        
+        audioSource.PlayOneShot(moveSound);
+    }
+
+    public IEnumerator MoveCoroutine(Vector2 moveTo)
+    {
+        yield return new WaitUntil(() => tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f)));
+        anim.SetFloat("Horizontal", moveTo.x);
+        anim.SetFloat("Vertical", moveTo.y);
         
         audioSource.PlayOneShot(moveSound);
     }
