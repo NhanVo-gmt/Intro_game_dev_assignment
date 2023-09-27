@@ -70,10 +70,12 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int j = 0; j < levelMap.GetLength(1); j++)
             {
-                // GenerateBlock(i, j, new Vector2(j, -i));
                 if (!table[i, j] && corner.Contains(levelMap[i, j]))
                 {
-                    Traverse(i, j, Direction.None);
+                    if (!TraverseInLoop(i, j, i, j, Direction.None))
+                    {
+                        TraverseLine(i, j, Direction.None);
+                    }
                 }
             }
         }
@@ -94,39 +96,42 @@ public class LevelGenerator : MonoBehaviour
         return true;
     }
 
-    private void Traverse(int i, int j, Direction fromDirection)
+    private void TraverseLine(int i, int j, Direction fromDirection)
     {
         if (!CanTravel(i, j)) return;
         
         table[i, j] = true;
-        GenerateBlock(i, j, new Vector2(j, -i), fromDirection);
 
+        Direction toDirection = Direction.None;
         if (corner.Contains(levelMap[i, j]))
         {
             if (fromDirection == Direction.None)
             {
-                Traverse(i, j + 1, Direction.RightWard);
-                Traverse(i + 1, j, Direction.DownWard);
+                TraverseLine(i, j + 1, Direction.RightWard);
+                TraverseLine(i + 1, j, Direction.DownWard);
             }
             else if (fromDirection == Direction.RightWard)
             {
-                Traverse(i + 1, j, Direction.DownWard);
+                TraverseLine(i + 1, j, Direction.DownWard);
+                toDirection = Direction.DownWard;
             }
             else if (fromDirection == Direction.DownWard)
             {
                 if (CanTravel(i, j + 1))
                 {
-                    Traverse(i, j + 1, Direction.RightWard);
+                    TraverseLine(i, j + 1, Direction.RightWard);
+                    toDirection = Direction.RightWard;
                 }
                 else
                 {
-                    Traverse(i, j - 1, Direction.LeftWard);
+                    TraverseLine(i, j - 1, Direction.LeftWard);
+                    toDirection = Direction.LeftWard;
                 }
             }
             else
             {
-                Debug.Log($"{i} + {j}");
-                Traverse(i + 1, j, Direction.DownWard);
+                TraverseLine(i + 1, j, Direction.DownWard);
+                toDirection = Direction.DownWard;
             }
         }
         else
@@ -134,33 +139,105 @@ public class LevelGenerator : MonoBehaviour
             switch (fromDirection)
             {
                 case Direction.DownWard:
-                    Traverse(i + 1, j, Direction.DownWard);
+                    TraverseLine(i + 1, j, Direction.DownWard);
                     break;
                 case Direction.RightWard:
-                    Traverse(i, j + 1, Direction.RightWard);
+                    TraverseLine(i, j + 1, Direction.RightWard);
                     break;
                 case Direction.LeftWard:
-                    Traverse(i, j - 1, Direction.LeftWard);
+                    TraverseLine(i, j - 1, Direction.LeftWard);
                     break;
             }
         }
+        
+        GenerateBlock(i, j, new Vector2(j, -i), fromDirection, toDirection);
     }
 
-    void GenerateBlock(int i, int j, Vector2 position, Direction direction)
+    private bool TraverseInLoop(int startI, int startJ, int i, int j, Direction fromDirection)
+    {
+        if (startI == i && startJ == j && table[i, j]) return true;
+        if (!CanTravel(i, j)) return false;
+        
+        table[i, j] = true;
+        
+        bool success = false;
+        Direction toDirection = Direction.None;
+        if (corner.Contains(levelMap[i, j]))
+        {
+            if (fromDirection == Direction.None)
+            {
+                success = TraverseInLoop(startI, startJ, i, j + 1, Direction.RightWard);
+            }
+            else
+            {
+                if (TraverseInLoop(startI, startJ, i, j + 1, Direction.RightWard))
+                {
+                    success = true;
+                    toDirection = Direction.RightWard;
+                }
+                else if (TraverseInLoop(startI, startJ, i + 1, j, Direction.DownWard))
+                {
+                    success = true;
+                    toDirection = Direction.DownWard;
+                }
+                else if (TraverseInLoop(startI, startJ, i - 1, j, Direction.UpWard))
+                {
+                    success = true;
+                    toDirection = Direction.UpWard;
+                }
+                else if (TraverseInLoop(startI, startJ, i, j - 1, Direction.LeftWard))
+                {
+                    success = true;
+                    toDirection = Direction.LeftWard;
+                }
+            }
+        }
+        else
+        {
+            switch (fromDirection)
+            {
+                case Direction.DownWard:
+                    success = TraverseInLoop(startI, startJ, i + 1, j, Direction.DownWard);
+                    break;
+                case Direction.RightWard:
+                    success = TraverseInLoop(startI, startJ, i, j + 1, Direction.RightWard);
+                    break;
+                case Direction.LeftWard:
+                    success = TraverseInLoop(startI, startJ, i, j - 1, Direction.LeftWard);
+                    break;
+                case Direction.UpWard:
+                    success = TraverseInLoop(startI, startJ, i - 1, j, Direction.UpWard);
+                    break;
+            }
+        }
+
+        table[i, j] = success;
+        if (success)
+        {
+            Debug.Log($"{toDirection} at {i} {j}");
+            GenerateBlock(i, j, new Vector2(j, -i), fromDirection, toDirection);
+        }
+        
+        
+        return success;
+    }
+        
+
+    void GenerateBlock(int i, int j, Vector2 position, Direction fromDirection, Direction toDirection = Direction.None)
     {
         switch (levelMap[i, j])
         {
             case 1:
-                Instantiate(OutsideCorner, position, RotateCorner(direction));
+                Instantiate(OutsideCorner, position, RotateCorner(fromDirection, toDirection));
                 break;
             case 2:
-                Instantiate(OutsideWall, position, RotateWall(direction));
+                Instantiate(OutsideWall, position, RotateWall(fromDirection));
                 break;
             case 3:
-                Instantiate(InsideCorner, position, RotateCorner(direction));
+                Instantiate(InsideCorner, position, RotateCorner(fromDirection, toDirection));
                 break;
             case 4:
-                Instantiate(InsideWall, position, RotateWall(direction));
+                Instantiate(InsideWall, position, RotateWall(fromDirection));
                 break;
             case 7:
                 Instantiate(TJunction, position, Quaternion.identity);
@@ -172,17 +249,24 @@ public class LevelGenerator : MonoBehaviour
     }
 
 
-    Quaternion RotateCorner(Direction direction)
+    Quaternion RotateCorner(Direction fromDirection, Direction toDirection = Direction.None)
     {
-        if (direction == Direction.None) return Quaternion.identity;
+        if (fromDirection == Direction.None) return Quaternion.identity;
 
-        if (direction == Direction.RightWard)
+        if (fromDirection == Direction.RightWard)
         {
+            if (toDirection == Direction.UpWard) return Quaternion.Euler(0, 0, 180);
             return Quaternion.Euler(0, 0, 270);
         }
-        else // only downward
+        else if (fromDirection == Direction.DownWard)
         {
+            if (toDirection == Direction.RightWard) return Quaternion.Euler(0, 0, 90);
             return Quaternion.Euler(0, 0, 180);
+        }
+        else // only leftward 
+        {
+            if (toDirection == Direction.DownWard) return Quaternion.identity;
+            return Quaternion.Euler(0, 0, 90);
         }
     }
 
