@@ -47,26 +47,44 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject TJunction;
     [SerializeField] private GameObject pellet;
     [SerializeField] private GameObject powerPellet;
+
+    [SerializeField] private Transform parent;
     
     void Start()
     {
-        GenerateTraverseTable();
+        
         GenerateLevel();
     }
 
-    void GenerateTraverseTable()
+    private void GenerateLevel()
     {
-        table = new bool[levelMap.GetLength(0), levelMap.GetLength(1)];
-        for (int i = 0; i < levelMap.GetLength(0); i++)
-        {
-            for (int j = 0; j < levelMap.GetLength(1); j++)
-            {
-                table[i, j] = false;
-            }
-        }
+        GenerateTraverseTable();
+        GenerateQuadrant();
+        GenerateOtherQuadrant();
     }
 
-    private void GenerateLevel()
+    private void GenerateOtherQuadrant()
+    {
+        int posX = levelMap.GetLength(1) * 2 - 1;
+        int posY = -(levelMap.GetLength(0) * 2 - 1);
+        
+        GameObject parent2Mirror = Instantiate(parent.gameObject, transform.position, Quaternion.identity);
+        parent2Mirror.transform.localScale = new Vector3(-1, 1, 1);
+        parent2Mirror.transform.position = new Vector3(posX, 0, 0);
+        
+        GameObject parent3Mirror = Instantiate(parent.gameObject, transform.position, Quaternion.identity);
+        parent3Mirror.transform.localScale = new Vector3(1, -1, 1);
+        parent3Mirror.transform.position = new Vector3(0, posY, 0);
+        
+        GameObject parent4Mirror = Instantiate(parent2Mirror, transform.position, Quaternion.identity);
+        parent4Mirror.transform.localScale = new Vector3(-1, -1, 1);
+        parent4Mirror.transform.position = new Vector3(posX, posY, 0);
+        
+    }
+
+    #region Generate map
+
+    void GenerateQuadrant()
     {
         for (int i = 0; i < levelMap.GetLength(0); i++)
         {
@@ -88,22 +106,19 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-
-    bool IsBlock(int i, int j)
+    
+    void GenerateTraverseTable()
     {
-        if (i >= levelMap.GetLength(0) || j >= levelMap.GetLength(1)) return false;
-
-        return block.Contains(levelMap[i,j]);
+        table = new bool[levelMap.GetLength(0), levelMap.GetLength(1)];
+        for (int i = 0; i < levelMap.GetLength(0); i++)
+        {
+            for (int j = 0; j < levelMap.GetLength(1); j++)
+            {
+                table[i, j] = false;
+            }
+        }
     }
-
-    bool CanTravel(int i, int j)
-    {
-        if (i >= levelMap.GetLength(0) || j >= levelMap.GetLength(1) || i < 0 || j < 0) return false;
-        if (table[i, j] || !IsBlock(i, j)) return false;
-
-        return true;
-    }
-
+    
     private void TraverseLine(int i, int j, Direction fromDirection)
     {
         if (!CanTravel(i, j)) return;
@@ -228,6 +243,22 @@ public class LevelGenerator : MonoBehaviour
         return success;
     }
 
+    bool IsBlock(int i, int j)
+    {
+        if (i >= levelMap.GetLength(0) || j >= levelMap.GetLength(1)) return false;
+
+        return block.Contains(levelMap[i,j]);
+    }
+
+    bool CanTravel(int i, int j)
+    {
+        if (i >= levelMap.GetLength(0) || j >= levelMap.GetLength(1) || i < 0 || j < 0) return false;
+        if (table[i, j] || !IsBlock(i, j)) return false;
+
+        return true;
+    }
+    
+
     void GeneratePellet(int i, int j)
     {
         if (table[i, j]) return;
@@ -243,25 +274,25 @@ public class LevelGenerator : MonoBehaviour
         switch (levelMap[i, j])
         {
             case 1:
-                Instantiate(OutsideCorner, spawnPos, RotateCorner(fromDirection, toDirection));
+                Instantiate(OutsideCorner, spawnPos, RotateCorner(fromDirection, toDirection)).transform.parent = parent;
                 break;
             case 2:
-                Instantiate(OutsideWall, spawnPos, RotateWall(fromDirection));
+                Instantiate(OutsideWall, spawnPos, RotateWall(fromDirection)).transform.parent = parent;
                 break;
             case 3:
-                Instantiate(InsideCorner, spawnPos, RotateCorner(fromDirection, toDirection));
+                Instantiate(InsideCorner, spawnPos, RotateCorner(fromDirection, toDirection)).transform.parent = parent;
                 break;
             case 4:
-                Instantiate(InsideWall, spawnPos, RotateWall(fromDirection));
+                Instantiate(InsideWall, spawnPos, RotateWall(fromDirection)).transform.parent = parent;
                 break;
             case 5:
-                Instantiate(pellet, spawnPos, Quaternion.identity);
+                Instantiate(pellet, spawnPos, Quaternion.identity).transform.parent = parent;
                 break;
             case 6:
-                Instantiate(powerPellet, spawnPos, Quaternion.identity);
+                Instantiate(powerPellet, spawnPos, Quaternion.identity).transform.parent = parent;
                 break;
             case 7:
-                Instantiate(TJunction, spawnPos, Quaternion.identity);
+                Instantiate(TJunction, spawnPos, Quaternion.identity).transform.parent = parent;
                 break;
             default:
                 return;
@@ -297,4 +328,6 @@ public class LevelGenerator : MonoBehaviour
         
         return Quaternion.Euler(0, 0, 90);
     }
+
+#endregion
 }
