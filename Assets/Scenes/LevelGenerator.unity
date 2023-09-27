@@ -44546,6 +44546,8 @@ MonoBehaviour:
   InsideCorner: {fileID: 2185236936955848376, guid: d6405934b831d044db7a9dc9f12ea563, type: 3}
   InsideWall: {fileID: 8316231266561594880, guid: 6ba00ee52d65e4f409e6045d97c8debf, type: 3}
   TJunction: {fileID: 2185236936955848376, guid: 52a5eed7736596f448c25b590899e333, type: 3}
+  pellet: {fileID: 5027701877329527129, guid: 2e439172ec0195740b331e9dbdc69a41, type: 3}
+  powerPellet: {fileID: 4480308948905660137, guid: 71dd8d34d458e03488423e13280e0c19, type: 3}
 --- !u!4 &2034010144
 Transform:
   m_ObjectHideFlags: 0

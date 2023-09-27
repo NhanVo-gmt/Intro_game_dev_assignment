@@ -10,9 +10,9 @@ public class LevelGenerator : MonoBehaviour
     {
         {1,2,2,2,2,2,2,2,2,2,2,2,2,1}, //todo change 1 to 7
         {2,5,5,5,5,5,5,5,5,5,5,5,5,4},
-        {2,5,3,4,4,3,5,3,4,4,4,3,5,4},
-        {2,6,4,0,0,4,5,4,0,0,0,4,5,4},
-        {2,5,3,4,4,3,5,3,4,4,4,3,5,3},
+        {2,5,3,4,4,4,4,4,4,4,4,3,5,4},
+        {2,6,4,0,0,0,5,0,0,0,0,4,5,4},
+        {2,5,3,4,4,4,4,4,4,4,4,3,5,3},
         {2,5,5,5,5,5,5,5,5,5,5,5,5,5},
         {2,5,3,4,4,3,5,3,3,5,3,4,4,4},
         {2,5,3,4,4,3,5,4,4,5,3,4,4,3},
@@ -45,6 +45,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject InsideCorner;
     [SerializeField] private GameObject InsideWall;
     [SerializeField] private GameObject TJunction;
+    [SerializeField] private GameObject pellet;
+    [SerializeField] private GameObject powerPellet;
     
     void Start()
     {
@@ -70,12 +72,18 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int j = 0; j < levelMap.GetLength(1); j++)
             {
-                if (!table[i, j] && corner.Contains(levelMap[i, j]))
+                if (table[i, j]) continue;
+                
+                if (corner.Contains(levelMap[i, j]))
                 {
                     if (!TraverseInLoop(i, j, i, j, Direction.None))
                     {
                         TraverseLine(i, j, Direction.None);
                     }
+                }
+                else
+                {
+                    GeneratePellet(i, j);
                 }
             }
         }
@@ -150,7 +158,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         
-        GenerateBlock(i, j, new Vector2(j, -i), fromDirection, toDirection);
+        GenerateBlock(i, j, fromDirection, toDirection);
     }
 
     private bool TraverseInLoop(int startI, int startJ, int i, int j, Direction fromDirection)
@@ -214,33 +222,46 @@ public class LevelGenerator : MonoBehaviour
         table[i, j] = success;
         if (success)
         {
-            Debug.Log($"{toDirection} at {i} {j}");
-            GenerateBlock(i, j, new Vector2(j, -i), fromDirection, toDirection);
+            GenerateBlock(i, j, fromDirection, toDirection);
         }
-        
         
         return success;
     }
+
+    void GeneratePellet(int i, int j)
+    {
+        if (table[i, j]) return;
+        table[i, j] = true;
+        
+        GenerateBlock(i, j, Direction.None, Direction.None);
+    }
         
 
-    void GenerateBlock(int i, int j, Vector2 position, Direction fromDirection, Direction toDirection = Direction.None)
+    void GenerateBlock(int i, int j, Direction fromDirection, Direction toDirection = Direction.None)
     {
+        Vector2 spawnPos = new Vector2(j, -i);
         switch (levelMap[i, j])
         {
             case 1:
-                Instantiate(OutsideCorner, position, RotateCorner(fromDirection, toDirection));
+                Instantiate(OutsideCorner, spawnPos, RotateCorner(fromDirection, toDirection));
                 break;
             case 2:
-                Instantiate(OutsideWall, position, RotateWall(fromDirection));
+                Instantiate(OutsideWall, spawnPos, RotateWall(fromDirection));
                 break;
             case 3:
-                Instantiate(InsideCorner, position, RotateCorner(fromDirection, toDirection));
+                Instantiate(InsideCorner, spawnPos, RotateCorner(fromDirection, toDirection));
                 break;
             case 4:
-                Instantiate(InsideWall, position, RotateWall(fromDirection));
+                Instantiate(InsideWall, spawnPos, RotateWall(fromDirection));
+                break;
+            case 5:
+                Instantiate(pellet, spawnPos, Quaternion.identity);
+                break;
+            case 6:
+                Instantiate(powerPellet, spawnPos, Quaternion.identity);
                 break;
             case 7:
-                Instantiate(TJunction, position, Quaternion.identity);
+                Instantiate(TJunction, spawnPos, Quaternion.identity);
                 break;
             default:
                 return;
