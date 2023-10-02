@@ -5,135 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/1OutsideCorner.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/1OutsideCorner.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/2OutsideWall.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/2OutsideWall.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/3InsideCorner.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/3InsideCorner.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/4InsideWall.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/4InsideWall.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/5StandardPellet.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/5StandardPellet.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/7TJunction.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/7TJunction.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/VisualScene.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/Dead.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/Dead.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostBlue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostBlue.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveDown.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveDown.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveLeft.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveLeft.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveRight.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveRight.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveUp.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/MoveUp.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/Recover.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/Recover.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/Scared.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/Scared.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/Dead.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/Dead.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/GhostAnimator_Green.overrideController" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/GhostAnimator_Green.overrideController.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/GhostGreen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/GhostGreen.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveDown.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveDown.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveLeft.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveLeft.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveRight.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveRight.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveUp.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/MoveUp.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/Recover.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/Recover.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/Scared.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostGreen/Scared.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/Dead.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/Dead.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/GhostAnimator_Orange.overrideController" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/GhostAnimator_Orange.overrideController.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/GhostOrange.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/GhostOrange.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveDown.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveDown.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveLeft.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveLeft.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveRight.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveRight.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveUp.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/MoveUp.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/Recover.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/Recover.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/Scared.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostOrange/Scared.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/Dead.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/Dead.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/GhostAnimator_White.overrideController" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/GhostAnimator_White.overrideController.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/GhostWhite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/GhostWhite.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveDown.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveDown.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveLeft.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveLeft.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveRight.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveRight.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveUp.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/MoveUp.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/Recover.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/Recover.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/Scared.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostWhite/Scared.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/Dead.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/Dead.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/Life Indicator.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/Life Indicator.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveDown.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveDown.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveLeft.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveLeft.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveRight.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveRight.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveUp.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/MoveUp.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/PacStudentAnim.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/PacStudentAnim.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/Pacman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/Pacman.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/Bonus point.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/Bonus point.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/Pellet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/Pellet.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet/FlashingAnim.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet/FlashingAnim.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet/PowerPellet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet/PowerPellet.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet/PowerPelletAnimator.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Pellet/PowerPellet/PowerPelletAnimator.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Wall.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Wall/Wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Visual Assets/Wall/Wall.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AudioScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AudioScene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VisualScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VisualScene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Visual Assets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VisualAssetScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VisualAssetScene.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging Development",
+    "git-widget-placeholder": "Development",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
