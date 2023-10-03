@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelGenerator.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelGenerator.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,6 +100,7 @@
       <workItem from="1695716497489" duration="970000" />
       <workItem from="1695718954684" duration="1469000" />
       <workItem from="1695768126125" duration="7385000" />
+      <workItem from="1696333969195" duration="353000" />
     </task>
     <servers />
   </component>
