@@ -40,6 +40,7 @@ public class LevelGenerator : MonoBehaviour
         None,
     }
 
+    [SerializeField] private GameObject OriginMap;
     [SerializeField] private GameObject OutsideCorner;
     [SerializeField] private GameObject OutsideWall;
     [SerializeField] private GameObject InsideCorner;
@@ -52,7 +53,7 @@ public class LevelGenerator : MonoBehaviour
     
     void Start()
     {
-        
+        OriginMap.SetActive(false);
         GenerateLevel();
     }
 
