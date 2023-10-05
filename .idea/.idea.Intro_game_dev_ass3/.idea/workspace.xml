@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Environment/7TJunction.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Environment/7TJunction.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,6 +103,8 @@
       <workItem from="1695718954684" duration="1469000" />
       <workItem from="1695768126125" duration="7385000" />
       <workItem from="1696333969195" duration="353000" />
+      <workItem from="1696488378695" duration="174000" />
+      <workItem from="1696491065281" duration="1297000" />
     </task>
     <servers />
   </component>
