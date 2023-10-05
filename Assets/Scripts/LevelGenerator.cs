@@ -6,36 +6,24 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    // int[,] levelMap =
-    // {
-    //     {1,2,2,2,2,2,2,2,2,2,2,2,2,1}, //todo change 1 to 7
-    //     {2,5,5,5,5,5,5,5,5,5,5,5,5,4},
-    //     {2,5,3,4,4,4,4,4,4,4,4,3,5,4},
-    //     {2,6,4,0,0,0,5,0,0,0,0,4,5,4},
-    //     {2,5,3,4,4,4,4,4,4,4,4,3,5,3},
-    //     {2,5,5,5,5,5,5,5,5,5,5,5,5,5},
-    //     {2,5,3,4,4,3,5,3,3,5,3,4,4,4},
-    //     {2,5,3,4,4,3,5,4,4,5,3,4,4,3},
-    //     {2,5,5,5,5,5,5,4,4,5,5,5,5,4},
-    //     {1,2,2,2,2,1,5,4,3,4,4,3,0,4},
-    //     {0,0,0,0,0,2,5,4,3,4,4,3,0,3},
-    //     {0,0,0,0,0,2,5,4,4,0,0,0,0,0},
-    //     {0,0,0,0,0,2,5,4,4,0,3,4,4,0},
-    //     {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
-    //     {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
-    // };
-    
     int[,] levelMap = 
-    {
-        {1,2,2,2,2,2,2,1},
-        {2,0,0,0,0,0,0,2},
-        {2,0,0,3,3,0,0,2},
-        {2,0,3,3,3,3,0,2},
-        {2,0,4,0,3,3,0,2},
-        {2,0,3,4,3,0,0,2},
-        {2,0,0,0,0,0,0,2},
-        {1,2,2,2,2,2,2,1},
-    };
+    { 
+        {1,2,2,2,2,2,2,2,2,2,2,2,2,7}, 
+        {2,5,5,5,5,5,5,5,5,5,5,5,5,4}, 
+        {2,5,3,4,4,3,5,3,4,4,4,3,5,4}, 
+        {2,6,4,0,0,4,5,4,0,0,0,4,5,4}, 
+        {2,5,3,4,4,3,5,3,4,4,4,3,5,3}, 
+        {2,5,5,5,5,5,5,5,5,5,5,5,5,5}, 
+        {2,5,3,4,4,3,5,3,3,5,3,4,4,4}, 
+        {2,5,3,4,4,3,5,4,4,5,3,4,4,3}, 
+        {2,5,5,5,5,5,5,4,4,5,5,5,5,4}, 
+        {1,2,2,2,2,1,5,4,3,4,4,3,0,4}, 
+        {0,0,0,0,0,2,5,4,3,4,4,3,0,3}, 
+        {0,0,0,0,0,2,5,4,4,0,0,0,0,0}, 
+        {0,0,0,0,0,2,5,4,4,0,3,4,4,0}, 
+        {2,2,2,2,2,1,5,3,3,0,4,0,0,0}, 
+        {0,0,0,0,0,0,5,0,0,0,4,0,0,0}, 
+    }; 
 
     private int[] block = { 1, 2, 3, 4, 7 };
     private int[] wall = { 2, 4 };
@@ -138,7 +126,7 @@ public class LevelGenerator : MonoBehaviour
         table[i, j] = true;
 
         Direction toDirection = Direction.None;
-        if (corner.Contains(levelMap[i, j]))
+        if (corner.Contains(levelMap[i, j]) || levelMap[i, j] == 7) 
         {
             if (fromDirection == Direction.None)
             {
@@ -152,21 +140,41 @@ public class LevelGenerator : MonoBehaviour
             }
             else if (fromDirection == Direction.DownWard)
             {
-                if (CanTravel(i, j + 1))
-                {
-                    TraverseLine(i, j + 1, Direction.RightWard);
-                    toDirection = Direction.RightWard;
-                }
-                else
+                if (CanTravel(i, j - 1))
                 {
                     TraverseLine(i, j - 1, Direction.LeftWard);
                     toDirection = Direction.LeftWard;
+                }
+                else
+                {
+                    TraverseLine(i, j + 1, Direction.RightWard);
+                    toDirection = Direction.RightWard;
                 }
             }
             else
             {
                 TraverseLine(i + 1, j, Direction.DownWard);
                 toDirection = Direction.DownWard;
+            }
+
+            if (levelMap[i, j] == 7)
+            {
+                switch (toDirection)
+                {
+                    case Direction.DownWard:
+                        toDirection = Direction.UpWard;
+                        break;
+                    case Direction.UpWard:
+                        toDirection = Direction.DownWard;
+                        break;
+                    case Direction.LeftWard:
+                        toDirection = Direction.RightWard;
+                        break;
+                    case Direction.RightWard:
+                        toDirection = Direction.LeftWard;
+                        break;
+                    
+                }
             }
         }
         else
@@ -227,7 +235,33 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
-        else
+        else if (levelMap[i, j] == 7)
+        {
+            List<Direction> goDirection = new List<Direction>() { Direction.UpWard , Direction.DownWard, Direction.LeftWard, Direction.RightWard};
+            if (TraverseInLoop(startI, startJ, i, j + 1, Direction.RightWard))
+            {
+                success = true;
+                goDirection.Remove(Direction.RightWard);
+            }
+            if (TraverseInLoop(startI, startJ, i + 1, j, Direction.DownWard))
+            {
+                success = true;
+                goDirection.Remove(Direction.DownWard);
+            }
+            if (TraverseInLoop(startI, startJ, i - 1, j, Direction.UpWard))
+            {
+                success = true;
+                goDirection.Remove(Direction.UpWard);
+            }
+            if (TraverseInLoop(startI, startJ, i, j - 1, Direction.LeftWard))
+            {
+                success = true;
+                goDirection.Remove(Direction.LeftWard);
+            }
+
+            toDirection = goDirection[0];
+        }
+        else 
         {
             switch (fromDirection)
             {
@@ -304,7 +338,7 @@ public class LevelGenerator : MonoBehaviour
                 Instantiate(powerPellet, spawnPos, Quaternion.identity).transform.parent = parent;
                 break;
             case 7:
-                Instantiate(TJunction, spawnPos, Quaternion.identity).transform.parent = parent;
+                Instantiate(TJunction, spawnPos, RotateTJoin(fromDirection, toDirection)).transform.parent = parent;
                 break;
             default:
                 return;
@@ -344,6 +378,14 @@ public class LevelGenerator : MonoBehaviour
         if (direction == Direction.LeftWard || direction == Direction.RightWard) return Quaternion.identity;
         
         return Quaternion.Euler(0, 0, 90);
+    }
+
+    Quaternion RotateTJoin(Direction fromDirection, Direction notToDirection)
+    {
+        if (notToDirection == Direction.LeftWard) return Quaternion.Euler(0, 0, 270);
+        if (notToDirection == Direction.RightWard) return Quaternion.Euler(0, 0, 90);
+        if (notToDirection == Direction.DownWard) return Quaternion.Euler(0, 0, 0);
+        return Quaternion.Euler(0, 0, 180);
     }
 
 #endregion
