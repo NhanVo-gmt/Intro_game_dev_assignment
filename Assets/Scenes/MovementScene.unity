@@ -36961,18 +36961,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 248532519, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 248532520, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 248532525, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4885524285920608464, guid: b364630fba053e24a90017c55ed9bcc2, type: 3}
       propertyPath: m_Name
       value: PacStudent
