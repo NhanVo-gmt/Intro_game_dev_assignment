@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         anim.SetFloat("Horizontal", moveTo.x);
         anim.SetFloat("Vertical", moveTo.y);
         
-        audioSource.PlayOneShot(moveSound);
+        if (moveSound != null)
+            audioSource.PlayOneShot(moveSound);
     }
 }
