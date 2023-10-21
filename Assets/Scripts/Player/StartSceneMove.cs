@@ -8,12 +8,12 @@ public class StartSceneMove : MonoBehaviour
     [SerializeField] private int moveStep = 21;
     [SerializeField] private bool isVisible = true;
 
-    private Player player;
+    private PacStudentController m_PacStudentController;
     private SpriteRenderer sprite;
 
     private void Awake()
     {
-        player = GetComponent<Player>();
+        m_PacStudentController = GetComponent<PacStudentController>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -51,7 +51,7 @@ public class StartSceneMove : MonoBehaviour
                     sprite.enabled = false;
                 }
             }
-            yield return player.MoveCoroutine(moveDirection[i]);
+            yield return m_PacStudentController.MoveCoroutine(moveDirection[i]);
         }
 
         yield return MoveAroundCoroutine();

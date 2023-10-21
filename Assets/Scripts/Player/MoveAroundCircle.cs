@@ -7,11 +7,11 @@ public class MoveAroundCircle : MonoBehaviour
 {
     [SerializeField] private List<Vector2> moveDirection = new List<Vector2>();
 
-    private Player player;
+    private PacStudentController m_PacStudentController;
 
     private void Awake()
     {
-        player = GetComponent<Player>();
+        m_PacStudentController = GetComponent<PacStudentController>();
     }
 
     private void Start()
@@ -47,7 +47,7 @@ public class MoveAroundCircle : MonoBehaviour
     {
         for (int i = 0; i < moveDirection.Count; i++)
         {
-            yield return player.MoveCoroutine(moveDirection[i]);
+            yield return m_PacStudentController.MoveCoroutine(moveDirection[i]);
         }
 
         yield return MoveAroundCoroutine();

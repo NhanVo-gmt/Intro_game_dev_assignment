@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PacStudentController : MonoBehaviour
 {
     [SerializeField] private AudioClip moveSound;
     
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // GetInput();
+        GetInput();
     }
 
     void GetInput()
