@@ -11,15 +11,18 @@ public class PacStudentController : MonoBehaviour
     private AudioSource audioSource;
     private Tweener tweener;
 
+    private float tweenerDuration = 0.5f;
+
     private KeyCode lastInputKey = KeyCode.S;
     private KeyCode currentInputKey = KeyCode.S;
+    private float timeSinceLastSet = 0f;
 
-    private Vector2 sizedBoxCheck = new Vector2(.9f, .9f);
+    private Vector2 sizedBoxCheck = new Vector2(.95f, .95f);
 
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
         tweener = GetComponent<Tweener>();
     }
@@ -85,21 +88,35 @@ public class PacStudentController : MonoBehaviour
 
     private void Move()
     {
+        Vector2 moveTo = GetMovementVector(currentInputKey);
+        if (CanMove(moveTo))
+        {
+            if (tweener.AddTween(new Tween(transform, moveTo, Time.time, tweenerDuration)))
+            {
+                anim.SetFloat("Horizontal", moveTo.x);
+                anim.SetFloat("Vertical", moveTo.y);
+                audioSource.PlayOneShot(moveSound);
+            }
+        }
+        
         if (CanMove(GetMovementVector(lastInputKey)))
         {
             currentInputKey = lastInputKey;
         }
-        
-        Vector2 moveTo = GetMovementVector(currentInputKey);
-        if (!CanMove(moveTo)) return;
-        
-        if (tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f)))
+    }
+
+    void ChangeCurrentInput()
+    {
+        if (timeSinceLastSet <= 0)
         {
-            anim.SetFloat("Horizontal", moveTo.x);
-            anim.SetFloat("Vertical", moveTo.y);
+            if (lastInputKey != currentInputKey && CanMove(GetMovementVector(lastInputKey)))
+            {
+                currentInputKey = lastInputKey;
+                timeSinceLastSet = tweenerDuration;
+            }
         }
-        
-        audioSource.PlayOneShot(moveSound);
+
+        timeSinceLastSet -= Time.deltaTime;
     }
 
     public IEnumerator MoveCoroutine(Vector2 moveTo)
