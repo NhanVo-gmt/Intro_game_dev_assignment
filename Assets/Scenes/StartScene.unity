@@ -2344,7 +2344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 22
+  moveStep: 23
   isVisible: 0
 --- !u!114 &550958676
 MonoBehaviour:
@@ -2633,6 +2633,7 @@ GameObject:
   - component: {fileID: 649538066}
   - component: {fileID: 649538065}
   - component: {fileID: 649538064}
+  - component: {fileID: 649538068}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2728,6 +2729,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &649538068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649538063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8cc20d998edecf4186e4ef89d90ae63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1Btn: {fileID: 1308564737}
+  level2Btn: {fileID: 1591406820}
 --- !u!1001 &664640145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4328,7 +4343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 22
+  moveStep: 23
   isVisible: 1
 --- !u!95 &1000908276
 Animator:
@@ -4612,7 +4627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 22
+  moveStep: 23
   isVisible: 1
 --- !u!114 &1026777710
 MonoBehaviour:
@@ -5073,7 +5088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 22
+  moveStep: 23
   isVisible: 0
 --- !u!114 &1192556390
 MonoBehaviour:
@@ -7532,7 +7547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 22
+  moveStep: 23
   isVisible: 0
 --- !u!114 &1897906554
 MonoBehaviour:

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuUI : MonoBehaviour
+public class StartSceneCanvas : MonoBehaviour
 {
     [SerializeField] private Button level1Btn;
     [SerializeField] private Button level2Btn;
