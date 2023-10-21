@@ -11,6 +11,8 @@ public class PacStudentController : MonoBehaviour
     private AudioSource audioSource;
     private Tweener tweener;
 
+    private KeyCode lastInputKey = KeyCode.S;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -21,34 +23,57 @@ public class PacStudentController : MonoBehaviour
     private void Update()
     {
         GetInput();
+        Move();
     }
 
     void GetInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Move(Vector2.left);
+            lastInputKey = KeyCode.A;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Move(Vector2.right);
+            lastInputKey = KeyCode.D;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Move(Vector2.up);
+            lastInputKey = KeyCode.W;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Move(Vector2.down);
+            lastInputKey = KeyCode.S;
+        }
+    }
+
+    private void Move()
+    {
+        switch (lastInputKey)
+        {
+            case KeyCode.A:
+                Move(Vector2.left);
+                break;
+            case KeyCode.D:
+                Move(Vector2.right);
+                break;
+            case KeyCode.S:
+                Move(Vector2.down);
+                break;
+            case KeyCode.W:
+                Move(Vector2.up);
+                break;
+            default:
+                break;
         }
     }
 
     private void Move(Vector2 moveTo)
     {
-        
-        tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f));
-        anim.SetFloat("Horizontal", moveTo.x);
-        anim.SetFloat("Vertical", moveTo.y);
+        if (tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f)))
+        {
+            anim.SetFloat("Horizontal", moveTo.x);
+            anim.SetFloat("Vertical", moveTo.y);
+        }
         
         audioSource.PlayOneShot(moveSound);
     }
