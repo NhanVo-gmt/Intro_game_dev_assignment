@@ -12,6 +12,10 @@ public class PacStudentController : MonoBehaviour
     private Tweener tweener;
 
     private KeyCode lastInputKey = KeyCode.S;
+    private KeyCode currentInputKey = KeyCode.S;
+
+    private Vector2 sizedBoxCheck = new Vector2(.9f, .9f);
+
 
     private void Awake()
     {
@@ -46,29 +50,49 @@ public class PacStudentController : MonoBehaviour
         }
     }
 
-    private void Move()
+    private bool CanMove(Vector2 moveTo)
     {
-        switch (lastInputKey)
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll((Vector2)transform.position + moveTo, sizedBoxCheck, 0);
+        foreach (Collider2D collider2D in collider2Ds)
+        {
+            if (collider2D.CompareTag("Wall"))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private Vector2 GetMovementVector(KeyCode keyCode)
+    {
+        switch (keyCode)
         {
             case KeyCode.A:
-                Move(Vector2.left);
-                break;
+                return Vector2.left;
             case KeyCode.D:
-                Move(Vector2.right);
-                break;
+                return Vector2.right;
             case KeyCode.S:
-                Move(Vector2.down);
-                break;
+                return Vector2.down;
             case KeyCode.W:
-                Move(Vector2.up);
-                break;
+                return Vector2.up;
             default:
                 break;
         }
+
+        return Vector2.zero;
     }
 
-    private void Move(Vector2 moveTo)
+    private void Move()
     {
+        if (CanMove(GetMovementVector(lastInputKey)))
+        {
+            currentInputKey = lastInputKey;
+        }
+        
+        Vector2 moveTo = GetMovementVector(currentInputKey);
+        if (!CanMove(moveTo)) return;
+        
         if (tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f)))
         {
             anim.SetFloat("Horizontal", moveTo.x);
