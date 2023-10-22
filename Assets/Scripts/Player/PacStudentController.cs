@@ -20,7 +20,7 @@ public class PacStudentController : MonoBehaviour
     private KeyCode currentInputKey = KeyCode.S;
     private float timeSinceLastSet = 0f;
 
-    private Vector2 sizedBoxCheck = new Vector2(.95f, .95f);
+    private Vector2 sizedBoxCheck = new Vector2(.9f, .9f);
 
     private bool hitWall = false;
 
@@ -115,6 +115,12 @@ public class PacStudentController : MonoBehaviour
         {
             currentInputKey = lastInputKey;
         }
+    }
+
+    public void Teleport(int newX, int newY)
+    {
+        tweener.StopTween();
+        transform.position = new Vector2(newX, newY);
     }
 
     IEnumerator HitWallCoroutine(Vector2 moveTo)

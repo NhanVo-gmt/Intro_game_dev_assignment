@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Tweener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Tweener.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f45a99ffbb9f4d0580258c77e560b3ab16e000/31/4f486953/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/CherryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/CherryMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Teleport.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartSceneCanvas.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -106,7 +108,7 @@
       <workItem from="1697186025276" duration="2105000" />
       <workItem from="1697188612679" duration="623000" />
       <workItem from="1697919389471" duration="10420000" />
-      <workItem from="1697937089220" duration="1016000" />
+      <workItem from="1697937089220" duration="2105000" />
     </task>
     <servers />
   </component>

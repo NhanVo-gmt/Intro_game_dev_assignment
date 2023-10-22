@@ -35,4 +35,9 @@ public class Tweener : MonoBehaviour
                 (Time.time - activeTween.StartTime) / activeTween.Duration);
         }
     }
+
+    public void StopTween()
+    {
+        activeTween = null;
+    }
 }
