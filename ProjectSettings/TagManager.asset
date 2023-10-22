@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Score
+  - Cherry
+  - Pellet
   layers:
   - Default
   - TransparentFX

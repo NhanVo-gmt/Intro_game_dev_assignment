@@ -6,9 +6,12 @@ using UnityEngine.Serialization;
 
 public class PacStudentController : MonoBehaviour
 {
+    [Header("Character")]
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private AudioClip hitWallSound;
     [SerializeField] private ParticleSystem hitWallParticle;
+
+    [Header("UI")] [SerializeField] private HUD hub;
     
     private Animator anim;
     private AudioSource audioSource;
@@ -111,10 +114,7 @@ public class PacStudentController : MonoBehaviour
             StartCoroutine(HitWallCoroutine(moveTo));
         }
         
-        if (CanMove(GetMovementVector(lastInputKey)))
-        {
-            currentInputKey = lastInputKey;
-        }
+        ChangeCurrentInput();
     }
 
     public void Teleport(int newX, int newY)
@@ -152,5 +152,19 @@ public class PacStudentController : MonoBehaviour
         
         if (moveSound != null)
             audioSource.PlayOneShot(moveSound);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Pellet"))
+        {
+            other.gameObject.SetActive(false);
+            hub.UpdateScore(10);
+        }
+        else if (other.CompareTag("Cherry"))
+        {
+            other.gameObject.SetActive(false);
+            hub.UpdateScore(100);
+        }
     }
 }

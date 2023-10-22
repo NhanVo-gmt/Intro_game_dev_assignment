@@ -49986,6 +49986,7 @@ GameObject:
   - component: {fileID: 848665472194652130}
   - component: {fileID: 848665472194652131}
   - component: {fileID: 848665472194652128}
+  - component: {fileID: 848665472194652142}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -50080,6 +50081,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &848665472194652142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848665472194652129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8738d1cb9d3e8d94a905820773d6f010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 2010085845}
 --- !u!4 &4885524287478968232
 Transform:
   m_ObjectHideFlags: 0
@@ -50133,6 +50147,7 @@ MonoBehaviour:
   moveSound: {fileID: 8300000, guid: 35f75a2748cee2f4dadf2d0de1e65d7b, type: 3}
   hitWallSound: {fileID: 8300000, guid: b4b99673c87e83a42a29654492f938d2, type: 3}
   hitWallParticle: {fileID: 8492175275920648993, guid: bb45c8fd217705e4ba064c450de1c240, type: 3}
+  hub: {fileID: 848665472194652142}
 --- !u!114 &4885524287478968241
 MonoBehaviour:
   m_ObjectHideFlags: 0
