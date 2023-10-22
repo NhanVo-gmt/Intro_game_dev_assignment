@@ -19,4 +19,13 @@ public class Tween
         this.StartTime = StartTime;
         this.Duration = Duration;
     }
+
+    public Tween(Transform Target, Vector2 StartPos, Vector2 EndPos, float StartTime, float DurationPermeter)
+    {
+        this.Target = Target;
+        this.StartPos = StartPos;
+        this.EndPos = EndPos;
+        this.StartTime = StartTime;
+        this.Duration = DurationPermeter * Vector2.Distance(StartPos, EndPos);
+    }
 }
