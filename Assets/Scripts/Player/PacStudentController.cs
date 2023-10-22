@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PacStudentController : MonoBehaviour
 {
     [SerializeField] private AudioClip moveSound;
+    [SerializeField] private AudioClip hitWallSound;
+    [SerializeField] private ParticleSystem hitWallParticle;
     
     private Animator anim;
     private AudioSource audioSource;
@@ -18,6 +21,8 @@ public class PacStudentController : MonoBehaviour
     private float timeSinceLastSet = 0f;
 
     private Vector2 sizedBoxCheck = new Vector2(.95f, .95f);
+
+    private bool hitWall = false;
 
 
     private void Awake()
@@ -97,12 +102,26 @@ public class PacStudentController : MonoBehaviour
                 anim.SetFloat("Vertical", moveTo.y);
                 audioSource.PlayOneShot(moveSound);
             }
+
+            hitWall = false;
+        }
+        else if (!hitWall)
+        {
+            hitWall = true;
+            StartCoroutine(HitWallCoroutine(moveTo));
         }
         
         if (CanMove(GetMovementVector(lastInputKey)))
         {
             currentInputKey = lastInputKey;
         }
+    }
+
+    IEnumerator HitWallCoroutine(Vector2 moveTo)
+    {
+        yield return new WaitForSeconds(tweenerDuration / 2);
+        audioSource.PlayOneShot(hitWallSound);
+        Instantiate(hitWallParticle,  (Vector2)transform.position + moveTo, Quaternion.identity);
     }
 
     void ChangeCurrentInput()
