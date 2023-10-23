@@ -6,10 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Environment/5StandardPellet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Environment/5StandardPellet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Environment/Bonus point.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Environment/Bonus point.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Dead State Ghost.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Dead State Ghost.mp3.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Game intro.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Game intro.mp3.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Normal State Ghost.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Normal State Ghost.mp3.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Scared State Ghost.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio Clips/Background music/Scared State Ghost.mp3.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Audio/Sound Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Audio/Sound Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Environment/PowerPellet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Environment/PowerPellet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Pellet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Pellet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/HUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HUD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +31,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f45a99ffbb9f4d0580258c77e560b3ab16e000/31/4f486953/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/CherryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/CherryMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Teleport.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GhostScareUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartSceneCanvas.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -111,7 +120,8 @@
       <workItem from="1697188612679" duration="623000" />
       <workItem from="1697919389471" duration="10420000" />
       <workItem from="1697937089220" duration="2609000" />
-      <workItem from="1697975297108" duration="2046000" />
+      <workItem from="1697975297108" duration="2163000" />
+      <workItem from="1698049962344" duration="3917000" />
     </task>
     <servers />
   </component>

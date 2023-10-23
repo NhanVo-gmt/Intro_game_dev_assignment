@@ -8,6 +8,8 @@ TagManager:
   - Score
   - Cherry
   - Pellet
+  - Ghost
+  - SoundManager
   layers:
   - Default
   - TransparentFX
