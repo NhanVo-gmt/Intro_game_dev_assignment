@@ -13,34 +13,42 @@ public class PacStudentController : MonoBehaviour
 
     [Header("UI")] [SerializeField] private HUD hub;
     
+    [Header("Component")]
     private Animator anim;
     private AudioSource audioSource;
+    private BoxCollider2D col;
     private Tweener tweener;
+    private SpriteRenderer sprite;
 
     private float tweenerDuration = 0.5f;
 
     private KeyCode lastInputKey = KeyCode.S;
-    private KeyCode currentInputKey = KeyCode.S;
+    [SerializeField] private KeyCode currentInputKey = KeyCode.S;
     private float timeSinceLastSet = 0f;
 
     private Vector2 sizedBoxCheck = new Vector2(.9f, .9f);
 
     private bool hitWall = false;
-
+    private bool isDie = false;
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
         tweener = GetComponent<Tweener>();
+        col = GetComponent<BoxCollider2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
     {
+        if (isDie) return;
+        
         GetInput();
         Move();
     }
 
+    #region Move
     void GetInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -116,20 +124,7 @@ public class PacStudentController : MonoBehaviour
         
         ChangeCurrentInput();
     }
-
-    public void Teleport(int newX, int newY)
-    {
-        tweener.StopTween();
-        transform.position = new Vector2(newX, newY);
-    }
-
-    IEnumerator HitWallCoroutine(Vector2 moveTo)
-    {
-        yield return new WaitForSeconds(tweenerDuration / 2);
-        audioSource.PlayOneShot(hitWallSound);
-        Instantiate(hitWallParticle,  (Vector2)transform.position + moveTo, Quaternion.identity);
-    }
-
+    
     void ChangeCurrentInput()
     {
         if (timeSinceLastSet <= 0)
@@ -142,6 +137,20 @@ public class PacStudentController : MonoBehaviour
         }
 
         timeSinceLastSet -= Time.deltaTime;
+    }
+    #endregion
+
+    public void Teleport(int newX, int newY)
+    {
+        tweener.StopTween();
+        transform.position = new Vector2(newX, newY);
+    }
+
+    IEnumerator HitWallCoroutine(Vector2 moveTo)
+    {
+        yield return new WaitForSeconds(tweenerDuration / 2);
+        audioSource.PlayOneShot(hitWallSound);
+        Instantiate(hitWallParticle,  (Vector2)transform.position + moveTo, Quaternion.identity);
     }
 
     public IEnumerator MoveCoroutine(Vector2 moveTo)
@@ -166,5 +175,39 @@ public class PacStudentController : MonoBehaviour
             other.gameObject.SetActive(false);
             hub.UpdateScore(100);
         }
+    }
+
+    public void Die()
+    {
+        StartCoroutine(RespawnCoroutine());
+    }
+
+    IEnumerator RespawnCoroutine()
+    {
+        col.enabled = false;
+        isDie = true;
+        anim.SetTrigger("Die");
+
+        yield return new WaitForSeconds(.5f);
+
+        sprite.enabled = false;
+        transform.position = new Vector2(1, -1);
+        
+        yield return new WaitForSeconds(1f);
+        
+        Respawn();
+    }
+
+    void Respawn()
+    {
+        anim.SetTrigger("Respawn");
+        
+        currentInputKey = KeyCode.Alpha0;
+        lastInputKey = KeyCode.Alpha0;
+        
+        tweener.StopTween();
+        isDie = false;
+        col.enabled = true;
+        sprite.enabled = true;
     }
 }

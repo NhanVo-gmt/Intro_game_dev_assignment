@@ -18,7 +18,6 @@ public class CherryController : MonoBehaviour
     private int maxX;
     private int minY;
     private int maxY;
-    private float moveDuration = 0.3f;
 
     private void Start()
     {
