@@ -7,11 +7,9 @@
     <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/CherryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/CherryController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Ghost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Ghost.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/PacStudentAnim.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Visual Assets/PacStudent/PacStudentAnim.controller" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +114,7 @@
       <workItem from="1697937089220" duration="2609000" />
       <workItem from="1697975297108" duration="2163000" />
       <workItem from="1698049962344" duration="5866000" />
+      <workItem from="1698126055201" duration="920000" />
     </task>
     <servers />
   </component>

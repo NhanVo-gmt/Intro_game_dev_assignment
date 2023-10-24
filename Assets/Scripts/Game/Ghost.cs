@@ -9,16 +9,21 @@ public class Ghost : MonoBehaviour
     {
         Normal,
         Scared,
-        Recover
+        Recover,
+        Die
     }
 
     [SerializeField] private GhostState currentState;
     
     private Animator anim;
+    private Collider2D col;
+
+    private float dieTime = 5f;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
         currentState = GhostState.Normal;
     }
 
@@ -30,30 +35,50 @@ public class Ghost : MonoBehaviour
 
     public void Recover()
     {
+        if (IsDead()) return;
+        
         currentState = GhostState.Recover;
         anim.SetTrigger("Recover");
     }
 
+    public bool IsDead()
+    {
+        return currentState == GhostState.Die;
+    }
+
+    public void Die()
+    {
+        currentState = GhostState.Die;
+        anim.SetTrigger("Die");
+        StartCoroutine(DieCoroutine());
+    }
+
+    IEnumerator DieCoroutine()
+    {
+        col.enabled = false;
+        yield return new WaitForSeconds(dieTime);
+
+        currentState = GhostState.Normal;
+        anim.SetTrigger("Normal");
+        col.enabled = true;
+    }
+
     public void Normal()
     {
+        if (IsDead()) return;
+        
         currentState = GhostState.Normal;
         anim.SetTrigger("Normal");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public GhostState GetCurrentState()
     {
-        if (other.TryGetComponent<PacStudentController>(out PacStudentController pacStudentController))
-        {
-            switch (currentState)
-            {
-                case GhostState.Normal:
-                    pacStudentController.Die();
-                    break;
-                case GhostState.Scared:
-                    break;
-                case GhostState.Recover:
-                    break;
-            }
-        }
+        return currentState;
     }
+
+    private void Update()
+    {
+        
+    }
+    
 }

@@ -6,10 +6,13 @@ using UnityEngine.Serialization;
 
 public class PacStudentController : MonoBehaviour
 {
-    [Header("Character")]
+    [Header("Sound")]
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private AudioClip hitWallSound;
+    
+    [Header("Particle")]
     [SerializeField] private ParticleSystem hitWallParticle;
+    [SerializeField] private ParticleSystem dieParticle;
 
     [Header("UI")] [SerializeField] private HUD hub;
     
@@ -175,6 +178,24 @@ public class PacStudentController : MonoBehaviour
             other.gameObject.SetActive(false);
             hub.UpdateScore(100);
         }
+        else if (other.CompareTag("Ghost"))
+        {
+            Ghost ghost = other.GetComponent<Ghost>();
+            switch (ghost.GetCurrentState())
+            {
+                case Ghost.GhostState.Normal:
+                    Die();
+                    break;
+                case Ghost.GhostState.Scared:
+                    ghost.Die();
+                    hub.UpdateScore(300);
+                    break;
+                case Ghost.GhostState.Recover:
+                    ghost.Die();
+                    hub.UpdateScore(300);
+                    break;
+            }
+        }
     }
 
     public void Die()
@@ -184,9 +205,11 @@ public class PacStudentController : MonoBehaviour
 
     IEnumerator RespawnCoroutine()
     {
+        dieParticle.Play();
         col.enabled = false;
         isDie = true;
         anim.SetTrigger("Die");
+        tweener.StopTween();
 
         yield return new WaitForSeconds(.5f);
 
@@ -205,7 +228,6 @@ public class PacStudentController : MonoBehaviour
         currentInputKey = KeyCode.Alpha0;
         lastInputKey = KeyCode.Alpha0;
         
-        tweener.StopTween();
         isDie = false;
         col.enabled = true;
         sprite.enabled = true;
