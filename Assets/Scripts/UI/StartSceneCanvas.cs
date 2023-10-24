@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +7,8 @@ public class StartSceneCanvas : MonoBehaviour
 {
     [SerializeField] private Button level1Btn;
     [SerializeField] private Button level2Btn;
-
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI timeText;
 
     private void OnEnable()
     {
@@ -19,6 +17,8 @@ public class StartSceneCanvas : MonoBehaviour
         
         level2Btn.onClick.RemoveAllListeners();
         level2Btn.onClick.AddListener(LoadDesignIteractionScene);
+        
+        UpdateText();
     }
 
     private void OnDisable()
@@ -34,6 +34,12 @@ public class StartSceneCanvas : MonoBehaviour
 
     void LoadDesignIteractionScene()
     {
-        SceneManager.LoadScene("DesignIteractionScene");
+        SceneManager.LoadScene("DesignInteractionScene");
+    }
+
+    void UpdateText()
+    {
+        scoreText.SetText($"High Score: {PlayerPrefs.GetInt("Score", 0)}"); 
+        timeText.SetText($"Time: {HelperMethod.GetTimeString(PlayerPrefs.GetFloat("GameTime", 0))}");
     }
 }

@@ -2729,6 +2729,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level1Btn: {fileID: 1308564737}
   level2Btn: {fileID: 1591406820}
+  scoreText: {fileID: 1475331738}
+  timeText: {fileID: 225570423}
 --- !u!1001 &664640145
 PrefabInstance:
   m_ObjectHideFlags: 0
