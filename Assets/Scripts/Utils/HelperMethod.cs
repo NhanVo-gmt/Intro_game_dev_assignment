@@ -16,4 +16,9 @@ public static class HelperMethod
     {
         return time < 10 ? $"0{time}" : time.ToString();
     }
+
+    public static Vector2 GetReverseVector(Vector2 reverseVector)
+    {
+        return reverseVector * -1;
+    }
 }

@@ -29,13 +29,20 @@ public class GhostController : MonoBehaviour
     private Collider2D col;
     private Tweener tweener;
     private GameObject pacStudent;
+    private GameObject spawmObject;
 
     private List<Vector2> surroundVector2s = new List<Vector2>() { Vector2.up, Vector2.left, Vector2.down, Vector2.right };
 
     private float dieTime = 5f;
+    
+    [Header("Enemy AI")]
     private float tweenerDuration = 0.6f;
     private bool canMove = false;
-    private Vector2 sizedBoxCheck = new Vector2(.9f, .9f);
+    private Vector2 sizedBoxCheck = new Vector2(.8f, .8f);
+
+    private int ghost4MoveIndex = 0;
+    private Vector2 lastMoveVector = Vector2.zero;
+    private GameObject currentTarget;
 
     private void Awake()
     {
@@ -43,7 +50,8 @@ public class GhostController : MonoBehaviour
         col = GetComponent<Collider2D>();
         tweener = GetComponent<Tweener>();
         pacStudent = GameObject.FindWithTag("Player");
-        currentState = GhostState.Normal;
+        spawmObject = GameObject.FindWithTag("Spawn");
+        Normal();
     }
 
     private void Start()
@@ -84,6 +92,7 @@ public class GhostController : MonoBehaviour
     public void Die()
     {
         currentState = GhostState.Die;
+        currentTarget = spawmObject;
         anim.SetTrigger("Die");
         SoundManager.Instance.PlayDeadGhostMusic();
         StartCoroutine(DieCoroutine());
@@ -102,7 +111,8 @@ public class GhostController : MonoBehaviour
     public void Normal()
     {
         if (IsDead()) return;
-        
+
+        currentTarget = pacStudent;
         currentState = GhostState.Normal;
         anim.SetTrigger("Normal");
     }
@@ -119,8 +129,10 @@ public class GhostController : MonoBehaviour
     void Move()
     {
         Vector2 moveTo = GetMovementVector();
+        
         if (tweener.AddTween(new Tween(transform, moveTo, Time.time, tweenerDuration)))
         {
+            lastMoveVector = HelperMethod.GetReverseVector(moveTo);
             anim.SetFloat("Horizontal", moveTo.x);
             anim.SetFloat("Vertical", moveTo.y);
         }
@@ -131,6 +143,10 @@ public class GhostController : MonoBehaviour
         if (currentState == GhostState.Scared || currentState == GhostState.Recover)
         {
             return GetGhost1MovementVector();
+        }
+        else if (currentState == GhostState.Die)
+        {
+            return GetGhost2MovementVector();
         }
         
         switch (ghostName)
@@ -145,6 +161,7 @@ public class GhostController : MonoBehaviour
                 return GetGhost4MovementVector();
         }
 
+        // not coming to this case
         return Vector2.zero;
     }
 
@@ -162,6 +179,11 @@ public class GhostController : MonoBehaviour
                 furthestDis = newDis;
                 res = surroundVector2s[i];
             }
+        }
+        
+        if (res == Vector2.zero)
+        {
+            return GetGhost3MovementVector();
         }
 
         return res;
@@ -183,6 +205,11 @@ public class GhostController : MonoBehaviour
             }
         }
 
+        if (res == Vector2.zero)
+        {
+            return GetGhost3MovementVector();
+        }
+
         return res;
     }
 
@@ -195,21 +222,35 @@ public class GhostController : MonoBehaviour
             
             validVector2s.Add(surroundVector2s[i]);
         }
+
+        if (validVector2s.Count == 0)
+        {
+            return lastMoveVector;
+        }
+            
         
         return validVector2s[Random.Range(0, validVector2s.Count)];
     }
 
     Vector2 GetGhost4MovementVector()
     {
-        return Vector2.zero;
+        while (!CanMove(surroundVector2s[ghost4MoveIndex]))
+        {
+            ghost4MoveIndex++;
+            if (ghost4MoveIndex >= surroundVector2s.Count) ghost4MoveIndex = 0;
+        }
+
+        return surroundVector2s[ghost4MoveIndex];
     }
     
     private bool CanMove(Vector2 moveTo)
     {
+        if (lastMoveVector == moveTo) return false;
+        
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll((Vector2)transform.position + moveTo, sizedBoxCheck, 0);
         foreach (Collider2D collider2D in collider2Ds)
         {
-            if (collider2D.CompareTag("Wall"))
+            if (collider2D.CompareTag("Wall") || collider2D.CompareTag("Teleport"))
             {
                 return false;
             }

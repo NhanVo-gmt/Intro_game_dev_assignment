@@ -10,6 +10,8 @@ TagManager:
   - Pellet
   - Ghost
   - SoundManager
+  - Teleport
+  - Spawn
   layers:
   - Default
   - TransparentFX
