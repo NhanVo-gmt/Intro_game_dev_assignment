@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public Action OnPausedGame;
     public Action OnPlayGame;
 
-    private List<Ghost> ghosts;
+    private List<GhostController> ghosts;
     
     [Header("Time Component")]
     private float timeBeforeStartGame = 3;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        ghosts = GameObject.FindGameObjectsWithTag("Ghost").Select(i => i.GetComponent<Ghost>()).ToList();
+        ghosts = GameObject.FindGameObjectsWithTag("Ghost").Select(i => i.GetComponent<GhostController>()).ToList();
         hub.ShowCountDown();
     }
 

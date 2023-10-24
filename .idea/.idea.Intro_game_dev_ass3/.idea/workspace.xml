@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/HUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HUD.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/StartSceneCanvas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/StartSceneCanvas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Ghost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/GhostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Ghost.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/GhostController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Feature-InGameFunctionality&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Feature-GhostMovement&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -114,7 +117,8 @@
       <workItem from="1697975297108" duration="2163000" />
       <workItem from="1698049962344" duration="5866000" />
       <workItem from="1698126055201" duration="7114000" />
-      <workItem from="1698133282298" duration="683000" />
+      <workItem from="1698133282298" duration="1127000" />
+      <workItem from="1698149993040" duration="1747000" />
     </task>
     <servers />
   </component>

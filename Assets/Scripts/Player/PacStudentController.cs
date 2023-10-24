@@ -79,18 +79,18 @@ public class PacStudentController : MonoBehaviour
         }
         else if (other.CompareTag("Ghost"))
         {
-            Ghost ghost = other.GetComponent<Ghost>();
-            switch (ghost.GetCurrentState())
+            GhostController ghostController = other.GetComponent<GhostController>();
+            switch (ghostController.GetCurrentState())
             {
-                case Ghost.GhostState.Normal:
+                case GhostController.GhostState.Normal:
                     Die();
                     break;
-                case Ghost.GhostState.Scared:
-                    ghost.Die();
+                case GhostController.GhostState.Scared:
+                    ghostController.Die();
                     GameManager.Instance.UpdateScore(300);
                     break;
-                case Ghost.GhostState.Recover:
-                    ghost.Die();
+                case GhostController.GhostState.Recover:
+                    ghostController.Die();
                     GameManager.Instance.UpdateScore(300);
                     break;
             }
