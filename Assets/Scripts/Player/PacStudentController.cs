@@ -13,8 +13,6 @@ public class PacStudentController : MonoBehaviour
     [Header("Particle")]
     [SerializeField] private ParticleSystem hitWallParticle;
     [SerializeField] private ParticleSystem dieParticle;
-
-    [Header("UI")] [SerializeField] private HUD hub;
     
     [Header("Component")]
     private Animator anim;
@@ -33,6 +31,7 @@ public class PacStudentController : MonoBehaviour
 
     private bool hitWall = false;
     private bool isDie = false;
+    private bool canMove = false;
 
     private void Awake()
     {
@@ -43,12 +42,49 @@ public class PacStudentController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnPlayGame += (() => canMove = true);
+    }
+
     private void Update()
     {
-        if (isDie) return;
+        if (isDie || !canMove) return;
         
         GetInput();
         Move();
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Pellet"))
+        {
+            other.gameObject.SetActive(false);
+            GameManager.Instance.UpdateScore(10);
+        }
+        else if (other.CompareTag("Cherry"))
+        {
+            other.gameObject.SetActive(false);
+            GameManager.Instance.UpdateScore(100);
+        }
+        else if (other.CompareTag("Ghost"))
+        {
+            Ghost ghost = other.GetComponent<Ghost>();
+            switch (ghost.GetCurrentState())
+            {
+                case Ghost.GhostState.Normal:
+                    Die();
+                    break;
+                case Ghost.GhostState.Scared:
+                    ghost.Die();
+                    GameManager.Instance.UpdateScore(300);
+                    break;
+                case Ghost.GhostState.Recover:
+                    ghost.Die();
+                    GameManager.Instance.UpdateScore(300);
+                    break;
+            }
+        }
     }
 
     #region Move
@@ -141,14 +177,7 @@ public class PacStudentController : MonoBehaviour
 
         timeSinceLastSet -= Time.deltaTime;
     }
-    #endregion
-
-    public void Teleport(int newX, int newY)
-    {
-        tweener.StopTween();
-        transform.position = new Vector2(newX, newY);
-    }
-
+    
     IEnumerator HitWallCoroutine(Vector2 moveTo)
     {
         yield return new WaitForSeconds(tweenerDuration / 2);
@@ -165,41 +194,14 @@ public class PacStudentController : MonoBehaviour
         if (moveSound != null)
             audioSource.PlayOneShot(moveSound);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Pellet"))
-        {
-            other.gameObject.SetActive(false);
-            hub.UpdateScore(10);
-        }
-        else if (other.CompareTag("Cherry"))
-        {
-            other.gameObject.SetActive(false);
-            hub.UpdateScore(100);
-        }
-        else if (other.CompareTag("Ghost"))
-        {
-            Ghost ghost = other.GetComponent<Ghost>();
-            switch (ghost.GetCurrentState())
-            {
-                case Ghost.GhostState.Normal:
-                    Die();
-                    break;
-                case Ghost.GhostState.Scared:
-                    ghost.Die();
-                    hub.UpdateScore(300);
-                    break;
-                case Ghost.GhostState.Recover:
-                    ghost.Die();
-                    hub.UpdateScore(300);
-                    break;
-            }
-        }
-    }
-
+    
+    #endregion
+    
+    #region Die and respawn
+    
     public void Die()
     {
+        GameManager.Instance.Die();
         StartCoroutine(RespawnCoroutine());
     }
 
@@ -231,5 +233,13 @@ public class PacStudentController : MonoBehaviour
         isDie = false;
         col.enabled = true;
         sprite.enabled = true;
+    }
+    
+    #endregion
+    
+    public void Teleport(int newX, int newY)
+    {
+        tweener.StopTween();
+        transform.position = new Vector2(newX, newY);
     }
 }

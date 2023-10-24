@@ -12,7 +12,7 @@ public class PowerPellet : MonoBehaviour
         if (other.GetComponent<PacStudentController>())
         {
             OnActivated?.Invoke();
-            SoundManager.Instance.ChangeToScaredGhostMusic();
+            SoundManager.Instance.PlayScaredGhostMusic();
             gameObject.SetActive(false);
         }
     }

@@ -50,6 +50,7 @@ public class Ghost : MonoBehaviour
     {
         currentState = GhostState.Die;
         anim.SetTrigger("Die");
+        SoundManager.Instance.PlayDeadGhostMusic();
         StartCoroutine(DieCoroutine());
     }
 

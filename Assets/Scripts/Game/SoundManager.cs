@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     
     [SerializeField] private AudioClip normalGhostStateClip;
     [SerializeField] private AudioClip scaredGhostStateClip;
+    [SerializeField] private AudioClip deadGhostStateClip;
     
     private AudioSource source;
 
@@ -29,18 +30,28 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeToNormalGhostMusic();
+        GameManager.Instance.OnPlayGame += PlayNormalGhostMusic;
     }
-
-    public void ChangeToNormalGhostMusic()
+    
+    public void PlayNormalGhostMusic()
     {
         source.clip = normalGhostStateClip;
         source.Play();
     }
 
-    public void ChangeToScaredGhostMusic()
+    public void PlayScaredGhostMusic()
     {
+        if (source.clip == scaredGhostStateClip) return;
+        
         source.clip = scaredGhostStateClip;
+        source.Play();
+    }
+    
+    public void PlayDeadGhostMusic()
+    {
+        if (source.clip == deadGhostStateClip) return;
+        
+        source.clip = deadGhostStateClip;
         source.Play();
     }
 }

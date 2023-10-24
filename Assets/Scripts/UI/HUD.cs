@@ -7,62 +7,42 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
+    [SerializeField] private CountdownUI countDownUI;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GhostScareUI ghostScareUI;
 
-    [SerializeField] private List<Ghost> ghosts;
-    
-    private int score = 0;
-
-    private void Start()
+    public void ShowCountDown()
     {
-        ghosts = GameObject.FindGameObjectsWithTag("Ghost").Select(i => i.GetComponent<Ghost>()).ToList();
+        countDownUI.Show();
     }
 
-    private void OnEnable()
+    public void UpdateCountDown(float time)
     {
-        foreach (PowerPellet powerPellet in FindObjectsOfType<PowerPellet>())
-        {
-            powerPellet.OnActivated += ScareGhost;
-        }
-
-        ghostScareUI.On3sLeft += RecoverGhost;
-        ghostScareUI.On0sLeft += NormalGhost;
-    }
-    
-    private void ScareGhost()
-    {
-        foreach (Ghost ghost in ghosts)
-        {
-            ghost.Scare();
-        }
-        UpdateGhostTimerUI();
+        countDownUI.UpdateText(time);
     }
 
-    private void UpdateGhostTimerUI()
+    public void HideCountDown()
+    {
+        countDownUI.Hide();
+    }
+
+    public void ShowGhostTimerUI()
     {
         ghostScareUI.Show();
     }
 
-    private void RecoverGhost()
+    public void UpdateGhostTimerUI(float timer)
     {
-        foreach (Ghost ghost in ghosts)
-        {
-            ghost.Recover();
-        }
-    }
-    
-    private void NormalGhost()
-    {
-        foreach (Ghost ghost in ghosts)
-        {
-            ghost.Normal();
-        }
+        ghostScareUI.UpdateTime(timer);
     }
 
-    public void UpdateScore(int addScore)
+    public void HideGhostTimerUI()
     {
-        score += addScore;
+        ghostScareUI.Hide();
+    }
+
+    public void UpdateScore(int score)
+    {
         scoreText.SetText($"Score: {score}");
     }
 }
