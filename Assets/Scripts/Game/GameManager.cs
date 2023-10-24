@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     private float scaredGhostElapseTime;
     private bool isRecover = false;
     private bool isNormal = true;
+
+    private float gameTimer = 0f;
     
     private int score = 0;
     private int lives = 3;
@@ -99,6 +101,8 @@ public class GameManager : MonoBehaviour
         }
         else if (currentState == GameState.Playing)
         {
+            gameTimer += Time.deltaTime;
+            hub.UpdateGameTimerUI(gameTimer);
             if (isNormal) return;
             
             scaredGhostElapseTime -= Time.deltaTime;

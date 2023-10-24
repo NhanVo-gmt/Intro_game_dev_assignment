@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private CountdownUI countDownUI;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GhostScareUI ghostScareUI;
+    [SerializeField] private TextMeshProUGUI gameTimerText;
 
     public void ShowCountDown()
     {
@@ -29,6 +30,19 @@ public class HUD : MonoBehaviour
     public void ShowGhostTimerUI()
     {
         ghostScareUI.Show();
+    }
+
+    public void UpdateGameTimerUI(float timer)
+    {
+        int fraction = (int)((timer * 100) % 100);
+        int second = (int)timer % 100;
+        int minute = 0;
+        gameTimerText.SetText($"{TimeString(minute)}:{TimeString(second)}:{TimeString(fraction)}");
+    }
+
+    string TimeString(int time)
+    {
+        return time < 10 ? $"0{time}" : time.ToString();
     }
 
     public void UpdateGhostTimerUI(float timer)

@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,7 +20,9 @@ public class CherryController : MonoBehaviour
     private int minY;
     private int maxY;
 
-    private void Start()
+    private bool canSpawn = false;
+
+    private void Awake()
     {
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
@@ -31,8 +34,14 @@ public class CherryController : MonoBehaviour
         maxY = Mathf.CeilToInt(camPos.y + height / 2);
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnPlayGame += (() => canSpawn = true);
+    }
+
     private void Update()
     {
+        if (!canSpawn) return;
         SpawnCherry();
     }
 
