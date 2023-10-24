@@ -8,12 +8,14 @@ public class StartSceneMove : MonoBehaviour
     [SerializeField] private int moveStep = 21;
     [SerializeField] private bool isVisible = true;
 
-    private PacStudentController m_PacStudentController;
+    private Animator anim;
+    private Tweener tweener;
     private SpriteRenderer sprite;
 
     private void Awake()
     {
-        m_PacStudentController = GetComponent<PacStudentController>();
+        anim = GetComponent<Animator>();
+        tweener = GetComponent<Tweener>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -51,9 +53,16 @@ public class StartSceneMove : MonoBehaviour
                     sprite.enabled = false;
                 }
             }
-            yield return m_PacStudentController.MoveCoroutine(moveDirection[i]);
+            yield return MoveCoroutine(moveDirection[i]);
         }
 
         yield return MoveAroundCoroutine();
+    }
+    
+    public IEnumerator MoveCoroutine(Vector2 moveTo)
+    {
+        yield return new WaitUntil(() => tweener.AddTween(new Tween(transform, moveTo, Time.time, .5f)));
+        anim.SetFloat("Horizontal", moveTo.x);
+        anim.SetFloat("Vertical", moveTo.y);
     }
 }

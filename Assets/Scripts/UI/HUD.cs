@@ -11,6 +11,8 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GhostScareUI ghostScareUI;
     [SerializeField] private TextMeshProUGUI gameTimerText;
+    [SerializeField] private CanvasGroup gameOver;
+    [SerializeField] private LifeUI lifeUI;
 
     public void ShowCountDown()
     {
@@ -58,5 +60,15 @@ public class HUD : MonoBehaviour
     public void UpdateScore(int score)
     {
         scoreText.SetText($"Score: {score}");
+    }
+
+    public void ShowGameOver()
+    {
+        gameOver.alpha = 1f;
+    }
+
+    public void UpdateLifeUI(int lives)
+    {
+        lifeUI.UpdateLives(lives);
     }
 }

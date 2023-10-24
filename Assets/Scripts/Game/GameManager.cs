@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -131,14 +132,42 @@ public class GameManager : MonoBehaviour
     public void Die()
     {
         lives -= 1;
+        
+        hub.UpdateLifeUI(lives);
+        
         if (lives <= 0)
         {
-            GameOver();
+            StartCoroutine(GameOverCoroutine());
         }
     }
 
-    private void GameOver()
+    IEnumerator GameOverCoroutine()
     {
-        throw new NotImplementedException();
+        currentState = GameState.Paused;
+        OnPausedGame?.Invoke();
+        hub.ShowGameOver();
+        
+        Save();
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("StartScene");
+    }
+
+    private void Save()
+    {
+        int highScore = PlayerPrefs.GetInt("Score", 0);
+        if (highScore < score)
+        {
+            PlayerPrefs.SetInt("Score", score);
+            PlayerPrefs.SetFloat("GameTime", gameTimer);
+        }
+        else if (highScore == score)
+        {
+            if (PlayerPrefs.GetFloat("GameTime", 0f) > gameTimer)
+            {
+                PlayerPrefs.SetFloat("GameTime", gameTimer);
+            }
+        }
     }
 }

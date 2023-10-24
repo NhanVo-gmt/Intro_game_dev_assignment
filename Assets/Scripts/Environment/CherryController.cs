@@ -37,6 +37,7 @@ public class CherryController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPlayGame += (() => canSpawn = true);
+        GameManager.Instance.OnPausedGame += (() => canSpawn = false);
     }
 
     private void Update()

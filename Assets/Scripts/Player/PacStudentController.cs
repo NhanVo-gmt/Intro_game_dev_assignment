@@ -40,11 +40,21 @@ public class PacStudentController : MonoBehaviour
         tweener = GetComponent<Tweener>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        col.enabled = false;
     }
 
     private void Start()
     {
-        GameManager.Instance.OnPlayGame += (() => canMove = true);
+        GameManager.Instance.OnPlayGame += (() =>
+        {
+            canMove = true;
+            col.enabled = true;
+        });
+        GameManager.Instance.OnPausedGame += (() =>
+        {
+            canMove = false;
+            col.enabled = false;
+        });
     }
 
     private void Update()

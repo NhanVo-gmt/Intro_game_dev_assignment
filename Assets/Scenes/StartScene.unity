@@ -2189,7 +2189,6 @@ GameObject:
   - component: {fileID: 550958672}
   - component: {fileID: 550958678}
   - component: {fileID: 550958677}
-  - component: {fileID: 550958676}
   - component: {fileID: 550958675}
   - component: {fileID: 550958674}
   - component: {fileID: 550958673}
@@ -2208,7 +2207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550958671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 1, z: 0}
+  m_LocalPosition: {x: 9.25, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2344,21 +2343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 23
+  moveStep: 25
   isVisible: 0
---- !u!114 &550958676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550958671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5f0fbde1471b94a9caeeacd9007593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSound: {fileID: 0}
 --- !u!114 &550958677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4227,7 +4213,6 @@ GameObject:
   - component: {fileID: 1000908271}
   - component: {fileID: 1000908272}
   - component: {fileID: 1000908274}
-  - component: {fileID: 1000908273}
   - component: {fileID: 1000908275}
   - component: {fileID: 1000908276}
   - component: {fileID: 1000908277}
@@ -4246,7 +4231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000908270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13, y: 1, z: 0}
+  m_LocalPosition: {x: 15.25, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4305,19 +4290,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1000908273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000908270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5f0fbde1471b94a9caeeacd9007593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSound: {fileID: 8300000, guid: 35f75a2748cee2f4dadf2d0de1e65d7b, type: 3}
 --- !u!114 &1000908274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4343,7 +4315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 23
+  moveStep: 25
   isVisible: 1
 --- !u!95 &1000908276
 Animator:
@@ -4472,7 +4444,6 @@ GameObject:
   - component: {fileID: 1026777706}
   - component: {fileID: 1026777712}
   - component: {fileID: 1026777711}
-  - component: {fileID: 1026777710}
   - component: {fileID: 1026777709}
   - component: {fileID: 1026777708}
   - component: {fileID: 1026777707}
@@ -4491,7 +4462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026777705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 1, z: 0}
+  m_LocalPosition: {x: 12.25, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4627,21 +4598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 23
+  moveStep: 25
   isVisible: 1
---- !u!114 &1026777710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026777705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5f0fbde1471b94a9caeeacd9007593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSound: {fileID: 0}
 --- !u!114 &1026777711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4933,7 +4891,6 @@ GameObject:
   - component: {fileID: 1192556386}
   - component: {fileID: 1192556392}
   - component: {fileID: 1192556391}
-  - component: {fileID: 1192556390}
   - component: {fileID: 1192556389}
   - component: {fileID: 1192556388}
   - component: {fileID: 1192556387}
@@ -4952,7 +4909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192556385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 1, z: 0}
+  m_LocalPosition: {x: 10.25, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5088,21 +5045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 23
+  moveStep: 25
   isVisible: 0
---- !u!114 &1192556390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192556385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5f0fbde1471b94a9caeeacd9007593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSound: {fileID: 0}
 --- !u!114 &1192556391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7392,7 +7336,6 @@ GameObject:
   - component: {fileID: 1897906550}
   - component: {fileID: 1897906556}
   - component: {fileID: 1897906555}
-  - component: {fileID: 1897906554}
   - component: {fileID: 1897906553}
   - component: {fileID: 1897906552}
   - component: {fileID: 1897906551}
@@ -7411,7 +7354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897906549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: 1, z: 0}
+  m_LocalPosition: {x: 11.25, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7547,21 +7490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: []
-  moveStep: 23
+  moveStep: 25
   isVisible: 0
---- !u!114 &1897906554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897906549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5f0fbde1471b94a9caeeacd9007593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSound: {fileID: 0}
 --- !u!114 &1897906555
 MonoBehaviour:
   m_ObjectHideFlags: 0
