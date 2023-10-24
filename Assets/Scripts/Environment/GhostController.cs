@@ -24,6 +24,7 @@ public class GhostController : MonoBehaviour
 
     [SerializeField] private GhostName ghostName;
     [SerializeField] private GhostState currentState;
+    public Action OnRespawn;
     
     private Animator anim;
     private Collider2D col;
@@ -31,18 +32,16 @@ public class GhostController : MonoBehaviour
     private GameObject pacStudent;
     private GameObject spawmObject;
 
-    private List<Vector2> surroundVector2s = new List<Vector2>() { Vector2.up, Vector2.left, Vector2.down, Vector2.right };
-
     private float dieTime = 5f;
+
     
     [Header("Enemy AI")]
-    private float tweenerDuration = 0.6f;
+    private List<Vector2> surroundVector2s = new List<Vector2>() { Vector2.up, Vector2.left, Vector2.down, Vector2.right };
+    private float tweenerDuration = 0.4f;
     private bool canMove = false;
     private Vector2 sizedBoxCheck = new Vector2(.8f, .8f);
-
-    private int ghost4MoveIndex = 0;
+    
     private Vector2 lastMoveVector = Vector2.zero;
-    private GameObject currentTarget;
 
     private void Awake()
     {
@@ -51,7 +50,7 @@ public class GhostController : MonoBehaviour
         tweener = GetComponent<Tweener>();
         pacStudent = GameObject.FindWithTag("Player");
         spawmObject = GameObject.FindWithTag("Spawn");
-        Normal();
+        currentState = GhostState.Normal;
     }
 
     private void Start()
@@ -92,7 +91,6 @@ public class GhostController : MonoBehaviour
     public void Die()
     {
         currentState = GhostState.Die;
-        currentTarget = spawmObject;
         anim.SetTrigger("Die");
         SoundManager.Instance.PlayDeadGhostMusic();
         StartCoroutine(DieCoroutine());
@@ -103,16 +101,21 @@ public class GhostController : MonoBehaviour
         col.enabled = false;
         yield return new WaitForSeconds(dieTime);
 
+        ResetState();
+    }
+
+    void ResetState()
+    {
         currentState = GhostState.Normal;
         anim.SetTrigger("Normal");
         col.enabled = true;
+        OnRespawn?.Invoke();
     }
 
     public void Normal()
     {
         if (IsDead()) return;
-
-        currentTarget = pacStudent;
+        
         currentState = GhostState.Normal;
         anim.SetTrigger("Normal");
     }
@@ -146,7 +149,7 @@ public class GhostController : MonoBehaviour
         }
         else if (currentState == GhostState.Die)
         {
-            return GetGhost2MovementVector();
+            return GetSpawnMovementVector();
         }
         
         switch (ghostName)
@@ -234,13 +237,22 @@ public class GhostController : MonoBehaviour
 
     Vector2 GetGhost4MovementVector()
     {
-        while (!CanMove(surroundVector2s[ghost4MoveIndex]))
+        for (int i = 0; i < surroundVector2s.Count; i++)
         {
-            ghost4MoveIndex++;
-            if (ghost4MoveIndex >= surroundVector2s.Count) ghost4MoveIndex = 0;
+            if (CanMove(surroundVector2s[i]))
+            {
+                return surroundVector2s[i];
+            }
+            
         }
 
-        return surroundVector2s[ghost4MoveIndex];
+        return lastMoveVector;
+    }
+    
+    Vector2 GetSpawnMovementVector()
+    {
+        Vector2 direction = spawmObject.transform.position - transform.position;
+        return direction.normalized;
     }
     
     private bool CanMove(Vector2 moveTo)
@@ -248,9 +260,9 @@ public class GhostController : MonoBehaviour
         if (lastMoveVector == moveTo) return false;
         
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll((Vector2)transform.position + moveTo, sizedBoxCheck, 0);
-        foreach (Collider2D collider2D in collider2Ds)
+        foreach (Collider2D collider in collider2Ds)
         {
-            if (collider2D.CompareTag("Wall") || collider2D.CompareTag("Teleport"))
+            if (collider.CompareTag("Wall") || collider.CompareTag("Teleport"))
             {
                 return false;
             }
@@ -260,4 +272,30 @@ public class GhostController : MonoBehaviour
     }
 
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Spawn"))
+        {
+            StopAllCoroutines();
+            MatchGroupGhostState();
+        }
+    }
+
+    private void MatchGroupGhostState()
+    {
+        currentState = GameManager.Instance.currentGroupGhostState;
+        switch (currentState)
+        {
+            case GhostState.Normal:
+                Normal();
+                break;
+            case GhostState.Recover:
+                Recover();
+                break;
+            case GhostState.Scared:
+                Scare();
+                break;
+        }
+    }
 }

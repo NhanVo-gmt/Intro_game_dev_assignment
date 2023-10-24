@@ -21,4 +21,9 @@ public static class HelperMethod
     {
         return reverseVector * -1;
     }
+
+    public static Vector2 SnapToGrid(Vector2 position)
+    {
+        return new Vector2((int)position.x, (int)position.y);
+    }
 }

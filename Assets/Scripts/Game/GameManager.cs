@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public Action OnPlayGame;
 
     private List<GhostController> ghosts;
+    public GhostController.GhostState currentGroupGhostState { get; private set; }
     
     [Header("Time Component")]
     private float timeBeforeStartGame = 3;
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ghosts = GameObject.FindGameObjectsWithTag("Ghost").Select(i => i.GetComponent<GhostController>()).ToList();
+        ghosts.ForEach(ghost => ghost.OnRespawn += RespawnGhost);
         hub.ShowCountDown();
     }
 
@@ -64,6 +66,23 @@ public class GameManager : MonoBehaviour
         {
             powerPellet.OnActivated += ScareGhost;
         }
+
+        currentGroupGhostState = GhostController.GhostState.Normal;
+    }
+
+    private void RespawnGhost()
+    {
+        if (!ghosts.Any(ghost => ghost.GetCurrentState() == GhostController.GhostState.Die))
+        {
+            if (currentGroupGhostState == GhostController.GhostState.Normal)
+            {
+                SoundManager.Instance.PlayNormalGhostMusic();
+            }
+            else
+            {
+                SoundManager.Instance.PlayScaredGhostMusic();
+            }
+        }
     }
 
     private void ScareGhost()
@@ -72,6 +91,7 @@ public class GameManager : MonoBehaviour
         isRecover = false;
         isNormal = false;
         scaredGhostElapseTime = scaredGhostTime;
+        currentGroupGhostState = GhostController.GhostState.Scared;
         
         hub.ShowGhostTimerUI();
     }
@@ -79,11 +99,14 @@ public class GameManager : MonoBehaviour
     private void RecoverGhost()
     {
         ghosts.ForEach(ghost => ghost.Recover());
+        currentGroupGhostState = GhostController.GhostState.Recover;
     }
     
     private void NormalGhost()
     {
         ghosts.ForEach(ghost => ghost.Normal());
+        SoundManager.Instance.PlayNormalGhostMusic();
+        currentGroupGhostState = GhostController.GhostState.Normal;
     }
 
     private void Update()
@@ -93,7 +116,7 @@ public class GameManager : MonoBehaviour
             hub.UpdateCountDown(timeBeforeStartGame);
             timeBeforeStartGame -= Time.deltaTime;
             
-            if (timeBeforeStartGame <= -1f)
+            if (timeBeforeStartGame <= 0f)
             {
                 currentState = GameState.Playing;
                 hub.HideCountDown();

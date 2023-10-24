@@ -8,8 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Assessment3Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/GhostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/GhostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/HelperMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/HelperMethod.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Visual Assets/Ghost/GhostBlue/GhostAnimator_Blue.controller" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +120,8 @@
       <workItem from="1698126055201" duration="7114000" />
       <workItem from="1698133282298" duration="1127000" />
       <workItem from="1698149993040" duration="3695000" />
+      <workItem from="1698153919113" duration="786000" />
+      <workItem from="1698154746156" duration="1119000" />
     </task>
     <servers />
   </component>
