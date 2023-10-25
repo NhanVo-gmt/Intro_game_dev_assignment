@@ -34,7 +34,7 @@ public class StartSceneCanvas : MonoBehaviour
 
     void LoadDesignIteractionScene()
     {
-        SceneManager.LoadScene("DesignInteractionScene");
+        SceneManager.LoadScene("InnovationScene");
     }
 
     void UpdateText()

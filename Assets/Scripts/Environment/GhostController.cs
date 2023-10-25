@@ -46,7 +46,6 @@ public class GhostController : MonoBehaviour
     [Header("Enemy 4")] 
     [SerializeField] private GameObject[] outsidePatrols;
     private int patrolIndex;
-    private bool isOutside = false;
 
     private void Awake()
     {
@@ -245,15 +244,15 @@ public class GhostController : MonoBehaviour
 
     Vector2 GetGhost4MovementVector()
     {
-        if (patrolIndex >= outsidePatrols.Length)
-        {
-            patrolIndex = 0;
-        }
-        else if (patrolIndex == -1) patrolIndex = HelperMethod.GetClosestIndex(outsidePatrols, gameObject);
+        if (patrolIndex == -1) patrolIndex = HelperMethod.GetClosestIndex(outsidePatrols, gameObject);
 
         if (Vector2.Distance(transform.position, outsidePatrols[patrolIndex].transform.position) < 0.1f)
         {
             patrolIndex++;
+        }
+        if (patrolIndex >= outsidePatrols.Length)
+        {
+            patrolIndex = 0;
         }
 
         return GetGhost2MovementVector(outsidePatrols[patrolIndex]);
