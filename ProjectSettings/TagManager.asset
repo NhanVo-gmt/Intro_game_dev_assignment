@@ -12,6 +12,7 @@ TagManager:
   - SoundManager
   - Teleport
   - Spawn
+  - GlobalLight
   layers:
   - Default
   - TransparentFX
