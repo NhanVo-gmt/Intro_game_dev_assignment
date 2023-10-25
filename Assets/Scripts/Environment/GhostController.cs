@@ -115,6 +115,7 @@ public class GhostController : MonoBehaviour
         anim.SetTrigger("Normal");
         col.enabled = true;
         OnRespawn?.Invoke();
+        transform.position = new Vector2((int)transform.position.x, (int)transform.position.y);
     }
 
     public void Normal()
@@ -282,8 +283,9 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Spawn"))
+        if (!isInSpawnArea && other.CompareTag("Spawn"))
         {
+            isInSpawnArea = true;
             StopAllCoroutines();
             MatchGroupGhostState();
         }
@@ -293,7 +295,6 @@ public class GhostController : MonoBehaviour
     {
         if (other.CompareTag("Spawn"))
         {
-            Debug.Log(1);
             isInSpawnArea = false;
         }
     }
