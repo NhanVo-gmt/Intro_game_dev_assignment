@@ -31,14 +31,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private HUD hub;
 
-    private GameState currentState = GameState.Start;
+    [SerializeField] private GameState currentState = GameState.Start;
 
     public Action OnStartGame;
     public Action OnPausedGame;
     public Action OnPlayGame;
 
+    public GhostController.GhostState currentGroupGhostState;
     private List<GhostController> ghosts;
-    public GhostController.GhostState currentGroupGhostState { get; private set; }
     
     [Header("Time Component")]
     private float timeBeforeStartGame = 3;

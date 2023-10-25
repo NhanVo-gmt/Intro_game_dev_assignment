@@ -22,8 +22,20 @@ public static class HelperMethod
         return reverseVector * -1;
     }
 
-    public static Vector2 SnapToGrid(Vector2 position)
+    public static int GetClosestIndex(GameObject[] gameObjects, GameObject player)
     {
-        return new Vector2((int)position.x, (int)position.y);
+        float dis = Vector2.Distance(gameObjects[0].transform.position, player.transform.position);
+        int index = 0;
+        for (int i = 1; i < gameObjects.Length; i++)
+        {
+            float newDis = Vector2.Distance(gameObjects[i].transform.position, player.transform.position);
+            if (newDis < dis)
+            {
+                dis = newDis;
+                index = i;
+            }
+        }
+
+        return index;
     }
 }

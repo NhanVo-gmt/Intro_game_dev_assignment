@@ -41,6 +41,7 @@ public class GhostController : MonoBehaviour
     private bool canMove = false;
     private Vector2 sizedBoxCheck = new Vector2(.8f, .8f);
     private Vector2 lastMoveVector = Vector2.zero;
+    private bool isInSpawnArea = true;
 
     [Header("Enemy 4")] 
     [SerializeField] private GameObject[] outsidePatrols;
@@ -149,10 +150,12 @@ public class GhostController : MonoBehaviour
     {
         if (currentState == GhostState.Scared || currentState == GhostState.Recover)
         {
+            patrolIndex = -1;
             return GetGhost1MovementVector(pacStudent);
         }
         else if (currentState == GhostState.Die)
         {
+            patrolIndex = 0;
             return GetSpawnMovementVector();
         }
         
@@ -245,6 +248,7 @@ public class GhostController : MonoBehaviour
         {
             patrolIndex = 0;
         }
+        else if (patrolIndex == -1) patrolIndex = HelperMethod.GetClosestIndex(outsidePatrols, gameObject);
 
         if (Vector2.Distance(transform.position, outsidePatrols[patrolIndex].transform.position) < 0.1f)
         {
@@ -267,10 +271,8 @@ public class GhostController : MonoBehaviour
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll((Vector2)transform.position + moveTo, sizedBoxCheck, 0);
         foreach (Collider2D collider in collider2Ds)
         {
-            if (collider.CompareTag("Wall") || collider.CompareTag("Teleport"))
-            {
-                return false;
-            }
+            if (!isInSpawnArea && collider.CompareTag("Spawn")) return false;
+            if (collider.CompareTag("Wall") || collider.CompareTag("Teleport")) return false;
         }
 
         return true;
@@ -284,6 +286,15 @@ public class GhostController : MonoBehaviour
         {
             StopAllCoroutines();
             MatchGroupGhostState();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Spawn"))
+        {
+            Debug.Log(1);
+            isInSpawnArea = false;
         }
     }
 
