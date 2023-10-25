@@ -40,8 +40,12 @@ public class GhostController : MonoBehaviour
     private float tweenerDuration = 0.4f;
     private bool canMove = false;
     private Vector2 sizedBoxCheck = new Vector2(.8f, .8f);
-    
     private Vector2 lastMoveVector = Vector2.zero;
+
+    [Header("Enemy 4")] 
+    [SerializeField] private GameObject[] outsidePatrols;
+    private int patrolIndex;
+    private bool isOutside = false;
 
     private void Awake()
     {
@@ -145,7 +149,7 @@ public class GhostController : MonoBehaviour
     {
         if (currentState == GhostState.Scared || currentState == GhostState.Recover)
         {
-            return GetGhost1MovementVector();
+            return GetGhost1MovementVector(pacStudent);
         }
         else if (currentState == GhostState.Die)
         {
@@ -155,9 +159,9 @@ public class GhostController : MonoBehaviour
         switch (ghostName)
         {
             case GhostName.Ghost1:
-                return GetGhost1MovementVector();
+                return GetGhost1MovementVector(pacStudent);
             case GhostName.Ghost2:
-                return GetGhost2MovementVector();
+                return GetGhost2MovementVector(pacStudent);
             case GhostName.Ghost3:
                 return GetGhost3MovementVector();
             case GhostName.Ghost4:
@@ -168,15 +172,15 @@ public class GhostController : MonoBehaviour
         return Vector2.zero;
     }
 
-    Vector2 GetGhost1MovementVector()
+    Vector2 GetGhost1MovementVector(GameObject target)
     {
         Vector2 res = Vector2.zero;
-        float furthestDis = Vector2.Distance(transform.position, pacStudent.transform.position);
+        float furthestDis = Vector2.Distance(transform.position, target.transform.position);
         for (int i = 0; i < surroundVector2s.Count; i++)
         {
             if (!CanMove(surroundVector2s[i])) continue;
             
-            float newDis = Vector2.Distance(surroundVector2s[i] + (Vector2)transform.position, pacStudent.transform.position);
+            float newDis = Vector2.Distance(surroundVector2s[i] + (Vector2)transform.position, target.transform.position);
             if (newDis >= furthestDis)
             {
                 furthestDis = newDis;
@@ -192,15 +196,15 @@ public class GhostController : MonoBehaviour
         return res;
     }
     
-    Vector2 GetGhost2MovementVector()
+    Vector2 GetGhost2MovementVector(GameObject target)
     {
         Vector2 res = Vector2.zero;
-        float closestDis = Vector2.Distance(transform.position, pacStudent.transform.position);
+        float closestDis = Vector2.Distance(transform.position, target.transform.position);
         for (int i = 0; i < surroundVector2s.Count; i++)
         {
             if (!CanMove(surroundVector2s[i])) continue;
             
-            float newDis = Vector2.Distance(surroundVector2s[i] + (Vector2)transform.position, pacStudent.transform.position);
+            float newDis = Vector2.Distance(surroundVector2s[i] + (Vector2)transform.position, target.transform.position);
             if (newDis <= closestDis)
             {
                 closestDis = newDis;
@@ -237,16 +241,17 @@ public class GhostController : MonoBehaviour
 
     Vector2 GetGhost4MovementVector()
     {
-        for (int i = 0; i < surroundVector2s.Count; i++)
+        if (patrolIndex >= outsidePatrols.Length)
         {
-            if (CanMove(surroundVector2s[i]))
-            {
-                return surroundVector2s[i];
-            }
-            
+            patrolIndex = 0;
         }
 
-        return lastMoveVector;
+        if (Vector2.Distance(transform.position, outsidePatrols[patrolIndex].transform.position) < 0.1f)
+        {
+            patrolIndex++;
+        }
+
+        return GetGhost2MovementVector(outsidePatrols[patrolIndex]);
     }
     
     Vector2 GetSpawnMovementVector()
