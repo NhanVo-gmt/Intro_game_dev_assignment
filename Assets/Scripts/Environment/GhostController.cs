@@ -313,5 +313,6 @@ public class GhostController : MonoBehaviour
                 Scare();
                 break;
         }
+        transform.position = new Vector2((int)transform.position.x, (int)transform.position.y);
     }
 }

@@ -21,7 +21,7 @@ public class PacStudentController : MonoBehaviour
     private Tweener tweener;
     private SpriteRenderer sprite;
 
-    private float tweenerDuration = 0.2f;
+    [SerializeField] private float tweenerDuration = 0.2f;
 
     private KeyCode lastInputKey = KeyCode.S;
     [SerializeField] private KeyCode currentInputKey = KeyCode.S;

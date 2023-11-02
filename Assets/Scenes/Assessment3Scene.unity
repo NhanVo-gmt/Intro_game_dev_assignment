@@ -52534,6 +52534,7 @@ MonoBehaviour:
   hitWallSound: {fileID: 8300000, guid: b4b99673c87e83a42a29654492f938d2, type: 3}
   hitWallParticle: {fileID: 8492175275920648993, guid: bb45c8fd217705e4ba064c450de1c240, type: 3}
   dieParticle: {fileID: 1646530368034729734}
+  tweenerDuration: 0.5
   currentInputKey: 115
 --- !u!114 &4885524287478968241
 MonoBehaviour:
