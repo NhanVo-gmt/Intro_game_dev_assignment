@@ -33,6 +33,8 @@ public class PacStudentController : MonoBehaviour
     private bool isDie = false;
     private bool canMove = false;
 
+    private Coroutine dieCoroutine;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -211,8 +213,8 @@ public class PacStudentController : MonoBehaviour
     
     public void Die()
     {
-        GameManager.Instance.Die();
-        StartCoroutine(RespawnCoroutine());
+        if (dieCoroutine != null) return;
+        dieCoroutine = StartCoroutine(RespawnCoroutine());
     }
 
     IEnumerator RespawnCoroutine()
@@ -222,6 +224,7 @@ public class PacStudentController : MonoBehaviour
         isDie = true;
         anim.SetTrigger("Die");
         tweener.StopTween();
+        GameManager.Instance.Die();
 
         yield return new WaitForSeconds(.5f);
 
@@ -231,6 +234,8 @@ public class PacStudentController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         Respawn();
+
+        dieCoroutine = null;
     }
 
     void Respawn()

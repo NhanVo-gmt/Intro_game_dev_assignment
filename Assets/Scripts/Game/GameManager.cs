@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private float showLightElapseTime;
     
     private int score = 0;
-    private int lives = 3;
+    [SerializeField] private int lives = 3;
     
     private void Start()
     {

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="" />
+    <list default="true" id="cacaf384-7671-48d1-93c6-e268f763bdee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intro_game_dev_ass3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PacStudentController.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +44,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Development",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -156,7 +160,8 @@
       <workItem from="1698713161190" duration="1968000" />
       <workItem from="1698720851157" duration="518000" />
       <workItem from="1698819015142" duration="684000" />
-      <workItem from="1698930897403" duration="1700000" />
+      <workItem from="1698930897403" duration="2022000" />
+      <workItem from="1698933263424" duration="389000" />
     </task>
     <servers />
   </component>
