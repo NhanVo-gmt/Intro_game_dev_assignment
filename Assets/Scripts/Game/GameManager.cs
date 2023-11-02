@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -14,11 +15,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this);
         }
     }
 
@@ -39,16 +35,21 @@ public class GameManager : MonoBehaviour
 
     public GhostController.GhostState currentGroupGhostState;
     private List<GhostController> ghosts;
+
+    [SerializeField] private Light2D globalLight2D;
     
     [Header("Time Component")]
     private float timeBeforeStartGame = 3;
 
-    private float scaredGhostTime = 10f;
+    private readonly float scaredGhostTime = 10f;
     private float scaredGhostElapseTime;
     private bool isRecover = false;
     private bool isNormal = true;
 
     private float gameTimer = 0f;
+
+    private readonly float showLightTime = 3f;
+    private float showLightElapseTime;
     
     private int score = 0;
     private int lives = 3;
@@ -66,8 +67,21 @@ public class GameManager : MonoBehaviour
         {
             powerPellet.OnActivated += ScareGhost;
         }
+        foreach (LightPellet lightPellet in FindObjectsOfType<LightPellet>())
+        {
+            lightPellet.OnActivated += ShowLight;
+        }
 
         currentGroupGhostState = GhostController.GhostState.Normal;
+    }
+
+    private void ShowLight()
+    {
+        if (globalLight2D != null)
+        {
+            globalLight2D.enabled = true;
+            showLightElapseTime = showLightTime;
+        }
     }
 
     private void RespawnGhost()
@@ -142,6 +156,14 @@ public class GameManager : MonoBehaviour
                 isNormal = true;
                 hub.HideGhostTimerUI();
                 NormalGhost();
+            }
+
+            if (showLightElapseTime <= 0) return;
+            showLightElapseTime -= Time.deltaTime;
+
+            if (showLightElapseTime <= 0f)
+            {
+                globalLight2D.enabled = false;
             }
         }
     }

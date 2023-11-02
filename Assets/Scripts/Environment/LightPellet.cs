@@ -6,18 +6,14 @@ using UnityEngine.Rendering.Universal;
 
 public class LightPellet : MonoBehaviour
 {
-    private Light2D globalLight2D;
-
-    private void Awake()
-    {
-        globalLight2D = GameObject.FindWithTag("GlobalLight").GetComponent<Light2D>();
-    }
+    public Action OnActivated;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<PacStudentController>())
         {
-            globalLight2D.enabled = true;
+            OnActivated?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

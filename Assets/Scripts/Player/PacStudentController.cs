@@ -252,4 +252,6 @@ public class PacStudentController : MonoBehaviour
         tweener.StopTween();
         transform.position = new Vector2(newX, newY);
     }
+    
+    
 }

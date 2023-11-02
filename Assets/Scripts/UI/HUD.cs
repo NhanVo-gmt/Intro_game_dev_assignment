@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
@@ -62,5 +64,10 @@ public class HUD : MonoBehaviour
     public void UpdateLifeUI(int lives)
     {
         lifeUI.UpdateLives(lives);
+    }
+
+    public void GoToStartScene()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
